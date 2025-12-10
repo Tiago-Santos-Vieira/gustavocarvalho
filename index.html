@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustavo Carvalho | Treinador e Nutricionista</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Configurações Personalizadas do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gustavo-green': '#00c853', // Verde vibrante similar ao da imagem
+                        'gustavo-dark': '#121212',  // Fundo estilo Instagram dark
+                        'gustavo-card': '#1e1e1e',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Animações Personalizadas */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Gradiente no Texto */
+        .text-gradient {
+            background: linear-gradient(to right, #00c853, #69f0ae);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Efeito Glassmorphism */
+        .glass-nav {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gustavo-dark text-white font-sans antialiased selection:bg-gustavo-green selection:text-white">
+
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex-shrink-0 flex items-center">
+                    <!-- Logo Maior e Sem Moldura Circular -->
+                    <img src="logo.png" alt="Logo Gustavo Carvalho" class="h-20 w-auto object-contain">
+                </div>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#home" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium">Início</a>
+                        <a href="#sobre" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium">Sobre</a>
+                        <a href="#servicos" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium">Consultoria</a>
+                        <a href="#palestras" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium">Palestras</a>
+                        <a href="#contato" class="bg-gustavo-green text-gustavo-dark hover:bg-white transition px-5 py-2 rounded-full font-bold text-sm shadow-lg shadow-green-500/20">Fale Comigo</a>
+                    </div>
+                </div>
+
+                <!-- Menu Mobile Button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div class="hidden md:hidden bg-gustavo-dark border-b border-gray-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gustavo-green">Início</a>
+                <a href="#sobre" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gustavo-green">Sobre</a>
+                <a href="#servicos" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gustavo-green">Consultoria</a>
+                <a href="#palestras" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gustavo-green">Palestras</a>
+                <a href="#contato" onclick="toggleMenu()" class="block px-3 py-2 text-gustavo-green font-bold">Fale Comigo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-gustavo-green opacity-10 blur-3xl rounded-full"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-blue-500 opacity-5 blur-3xl rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                
+                <!-- Texto Hero -->
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left reveal active">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-gustavo-green/30 bg-gustavo-green/10 text-gustavo-green text-xs font-semibold tracking-wide uppercase mb-4">
+                        <i class="fas fa-bolt mr-2"></i> 1% Todo Dia
+                    </div>
+                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
+                        Ciência e Estratégia para o seu <span class="text-gradient">Emagrecimento</span>
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-300 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0">
+                        Sou especialista em Biomecânica, Fisiologia do Exercício e Nutrição Esportiva. Chega de treinos genéricos. Tenha resultados reais com base científica.
+                    </p>
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4">
+                        <a href="#servicos" class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-full text-gustavo-dark bg-gustavo-green hover:bg-white hover:scale-105 transition duration-300 shadow-lg shadow-green-500/30">
+                            Consultoria Fitness
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" class="flex items-center justify-center px-8 py-3 border border-gray-600 text-base font-medium rounded-full text-white hover:border-gustavo-green hover:text-gustavo-green transition duration-300">
+                            <i class="fab fa-youtube mr-2"></i> Ver Canal
+                        </a>
+                    </div>
+                    
+                    <!-- Credenciais Rápidas -->
+                    <div class="mt-8 pt-6 border-t border-gray-800 flex flex-wrap gap-6 justify-center lg:justify-start text-gray-400 text-sm font-medium">
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-gustavo-green mr-2"></i> Ed. Física & Nutrição
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-university text-gustavo-green mr-2"></i> Mestrando Fisiologia UFMG
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imagem Hero (Placeholder visual baseado na foto dele) -->
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center reveal">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                        <div class="relative block w-full bg-white rounded-2xl overflow-hidden shadow-2xl border-4 border-gustavo-green">
+                            <!-- Atualização da Imagem do Início -->
+                            <img class="w-full h-full object-cover transform hover:scale-105 transition duration-500" src="fotoinicio.png" alt="Treinador Gustavo Carvalho">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+                                <p class="text-white font-bold text-xl">Treinador Gustavo Carvalho</p>
+                                <p class="text-gustavo-green text-sm">Personal Trainer & Nutricionista</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre / Metodologia -->
+    <section id="sobre" class="py-20 bg-gustavo-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                    Por que escolher minha metodologia?
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-400 mx-auto">
+                    Não é achismo. É ciência aplicada ao resultado.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-gustavo-dark p-8 rounded-2xl border border-gray-800 hover:border-gustavo-green transition duration-300 reveal group">
+                    <div class="w-14 h-14 bg-gustavo-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gustavo-green transition">
+                        <i class="fas fa-microscope text-2xl text-gustavo-green group-hover:text-gustavo-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Base Científica</h3>
+                    <p class="text-gray-400">
+                        Como mestrando em Fisiologia na UFMG, utilizo as mais recentes descobertas científicas para otimizar seu treino e dieta.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gustavo-dark p-8 rounded-2xl border border-gray-800 hover:border-gustavo-green transition duration-300 reveal group" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-gustavo-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gustavo-green transition">
+                        <i class="fas fa-heartbeat text-2xl text-gustavo-green group-hover:text-gustavo-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Biomecânica & Fisiologia</h3>
+                    <p class="text-gray-400">
+                        Exercícios prescritos respeitando a mecânica do seu corpo para prevenir lesões e maximizar a hipertrofia e emagrecimento.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gustavo-dark p-8 rounded-2xl border border-gray-800 hover:border-gustavo-green transition duration-300 reveal group" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-gustavo-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gustavo-green transition">
+                        <i class="fas fa-apple-alt text-2xl text-gustavo-green group-hover:text-gustavo-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Nutrição Integrada</h3>
+                    <p class="text-gray-400">
+                        O treino sozinho não faz milagre. Alinhamos estratégias nutricionais específicas para suportar sua rotina e objetivos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gustavo-green font-bold tracking-wider uppercase text-sm">Planos e Consultoria</span>
+                <h2 class="mt-2 text-3xl font-extrabold text-white sm:text-4xl">Como posso te ajudar hoje?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Consultoria Online -->
+                <div class="relative bg-gradient-to-b from-gray-800 to-gustavo-card rounded-3xl p-1 p-0.5 overflow-hidden reveal">
+                    <div class="bg-gustavo-dark rounded-[22px] p-8 h-full flex flex-col">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Consultoria Fitness</h3>
+                                <p class="text-gustavo-green font-medium">Online</p>
+                            </div>
+                            <i class="fas fa-laptop-medical text-3xl text-gray-500"></i>
+                        </div>
+                        <p class="text-gray-400 mb-6 flex-grow">
+                            Treino e dieta na palma da sua mão. Acompanhamento via app, análise de vídeos de execução e ajustes periódicos.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-gray-300 text-sm">
+                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Periodização personalizada</li>
+                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Suporte via WhatsApp</li>
+                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Prescrição nutricional</li>
+                        </ul>
+                        <a href="https://www.mfitpersonal.com.br/index?acao=page&tipo=1&page=31832&isCheckout=false" target="_blank" class="w-full block text-center bg-transparent border-2 border-gustavo-green text-gustavo-green font-bold py-3 rounded-xl hover:bg-gustavo-green hover:text-gustavo-dark transition">
+                            Saber Mais
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Personal Trainer (Destaque) -->
+                <div class="relative bg-gustavo-green rounded-3xl p-0.5 overflow-hidden transform md:-translate-y-4 shadow-2xl shadow-green-900/50 reveal">
+                    <div class="absolute top-0 right-0 bg-white text-gustavo-dark text-xs font-bold px-3 py-1 rounded-bl-xl z-10">MAIS PROCURADO</div>
+                    <div class="bg-gustavo-card rounded-[22px] p-8 h-full flex flex-col relative">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Personal Trainer</h3>
+                                <p class="text-gustavo-green font-medium">Presencial</p>
+                            </div>
+                            <i class="fas fa-dumbbell text-3xl text-white"></i>
+                        </div>
+                        <p class="text-gray-400 mb-6 flex-grow">
+                            Acompanhamento presencial para extrair seu máximo. Correção biomecânica em tempo real e motivação.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-gray-300 text-sm">
+                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Atendimento exclusivo</li>
+                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Avaliação física completa</li>
+                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Planejamento Nutricional incluso</li>
+                        </ul>
+                        <a href="https://wa.me/5531999482018?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20saber%20sobre%20Personal%20Presencial." class="w-full block text-center bg-gustavo-green text-gustavo-dark font-bold py-3 rounded-xl hover:bg-white transition shadow-lg">
+                            Agendar Avaliação
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nova Seção: Palestras e Workshops -->
+    <section id="palestras" class="py-24 bg-gustavo-card relative">
+        <div class="absolute right-0 bottom-0 opacity-5 pointer-events-none">
+            <i class="fas fa-chalkboard-teacher text-9xl text-gustavo-green"></i>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <!-- Conteúdo -->
+                <div class="mb-12 lg:mb-0 reveal">
+                    <span class="text-gustavo-green font-bold tracking-wider uppercase text-sm mb-2 block">Educação e Ciência</span>
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl mb-6">
+                        Leve Conhecimento Científico para o seu Evento
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        Compartilho minha experiência acadêmica (Mestrando UFMG) e prática através de palestras e workshops dinâmicos. Ideal para academias, universidades, grupos de estudos e eventos fitness.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gustavo-dark border border-gray-700 flex items-center justify-center text-gustavo-green">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-white">Biomecânica Aplicada</h4>
+                                <p class="text-gray-400 text-sm">Prevenção de lesões e otimização do movimento.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gustavo-dark border border-gray-700 flex items-center justify-center text-gustavo-green">
+                                <i class="fas fa-burn"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-white">Fisiologia do Emagrecimento</h4>
+                                <p class="text-gray-400 text-sm">Estratégias metabólicas baseadas em evidências.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gustavo-dark border border-gray-700 flex items-center justify-center text-gustavo-green">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-white">Periodização de Treinamento</h4>
+                                <p class="text-gray-400 text-sm">Como estruturar treinos de longo prazo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5531999482018?text=Ol%C3%A1%2C%20Gustavo!%20Gostaria%20de%20saber%20sobre%20palestras%20e%20workshops." class="inline-flex items-center px-6 py-3 border border-gustavo-green text-base font-bold rounded-full text-gustavo-green hover:bg-gustavo-green hover:text-gustavo-dark transition duration-300">
+                        <i class="far fa-calendar-alt mr-2"></i> Solicitar Orçamento
+                    </a>
+                </div>
+
+                <!-- Imagem Ilustrativa -->
+                <div class="relative reveal">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
+                        <img src="fotopalestra.png" alt="Palestra Fitness" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gustavo-dark via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <p class="text-white font-bold text-lg">Workshops Práticos</p>
+                            <p class="text-gray-300 text-sm">Teoria e prática lado a lado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Final -->
+    <section class="py-20 bg-gustavo-green">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl font-extrabold text-gustavo-dark sm:text-4xl mb-6">
+                Pronto para fazer o seu 1% de hoje?
+            </h2>
+            <p class="text-xl text-green-900 mb-10 font-medium">
+                Não espere a "segunda-feira" para mudar sua vida. A ciência e a estratégia que você precisa estão a um clique de distância.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/5531999482018" class="flex items-center justify-center px-8 py-4 bg-gustavo-dark text-white font-bold rounded-full text-lg hover:scale-105 transition shadow-xl">
+                    <i class="fab fa-whatsapp mr-2 text-2xl"></i> Falar no WhatsApp
+                </a>
+                <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="flex items-center justify-center px-8 py-4 bg-white/20 border-2 border-gustavo-dark text-gustavo-dark font-bold rounded-full text-lg hover:bg-gustavo-dark hover:text-white transition">
+                    <i class="fab fa-instagram mr-2 text-2xl"></i> Seguir no Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato" class="bg-gustavo-card pt-12 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="logo.png" alt="Logo Gustavo Carvalho" class="h-16 w-auto object-contain mb-4">
+                    <p class="text-gray-500 text-sm mt-2">© 2025 Todos os direitos reservados.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="text-gray-400 hover:text-gustavo-green transition">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" class="text-gray-400 hover:text-gustavo-green transition">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                    <a href="https://wa.me/5531999482018" class="text-gray-400 hover:text-gustavo-green transition">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gustavo-green transition">
+                        <i class="far fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5531999482018" class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 hover:scale-110 transition duration-300 animate-bounce">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Scripts Javascript -->
+    <script>
+        // Lógica do Menu Mobile
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        // Lógica de Scroll Reveal (Animação ao rolar)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Ativar reveal no carregamento inicial
+        reveal();
+
+        // Smooth Scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
