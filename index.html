@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,12 +20,35 @@
             theme: {
                 extend: {
                     colors: {
-                        'gustavo-green': '#00c853', // Verde vibrante similar ao da imagem
-                        'gustavo-dark': '#121212',  // Fundo estilo Instagram dark
-                        'gustavo-card': '#1e1e1e',
+                        'gustavo-green': '#00c853',
+                        'gustavo-green-light': '#69f0ae',
+                        'gustavo-dark': '#0a0a0a', 
+                        'gustavo-card': '#141414',
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(0, 200, 83, 0.4)' },
+                            '70%': { boxShadow: '0 0 0 15px rgba(0, 200, 83, 0)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
                     }
                 }
             }
@@ -33,57 +56,152 @@
     </script>
 
     <style>
-        /* Animações Personalizadas */
+        /* Estilos Globais e Utilitários */
+        body {
+            overflow-x: hidden;
+            background-color: #050505;
+        }
+
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00c853;
+        }
+
+        /* Animações de Entrada (Scroll Reveal) */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(40px) scale(0.95);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: blur(10px);
         }
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+            filter: blur(0);
         }
         
-        /* Gradiente no Texto */
+        /* Gradiente no Texto Animado */
         .text-gradient {
-            background: linear-gradient(to right, #00c853, #69f0ae);
-            -webkit-background-clip: text;
+            background: linear-gradient(to right, #00c853, #b9f6ca, #00c853);
+            background-size: 200% auto;
+            color: #000;
             background-clip: text;
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
         }
 
-        /* Efeito Glassmorphism */
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Glassmorphism Premium */
         .glass-nav {
-            background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 200, 83, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -10px rgba(0, 200, 83, 0.15);
+            background: rgba(30, 30, 30, 0.8);
+        }
+
+        /* Efeito Glow nos Botões */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-glow:hover::after {
+            left: 100%;
+        }
+
+        /* Background Dinâmico (Blobs) */
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+            animation: blob 10s infinite;
         }
     </style>
 </head>
-<body class="bg-gustavo-dark text-white font-sans antialiased selection:bg-gustavo-green selection:text-white">
+<body class="text-white font-sans antialiased selection:bg-gustavo-green selection:text-white">
+
+    <!-- Background Animado Global -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="bg-blob bg-gustavo-green w-96 h-96 top-0 -left-20 mix-blend-screen"></div>
+        <div class="bg-blob bg-blue-600 w-96 h-96 bottom-0 -right-20 mix-blend-screen animation-delay-2000"></div>
+        <div class="bg-blob bg-purple-600 w-72 h-72 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-screen animation-delay-4000 opacity-20"></div>
+    </div>
 
     <!-- Navegação -->
-    <nav class="fixed w-full z-50 glass-nav border-b border-gray-800">
+    <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <!-- Logo Maior e Sem Moldura Circular -->
-                    <img src="logo.png" alt="Logo Gustavo Carvalho" class="h-14 w-auto object-contain">
+                <div class="flex-shrink-0 flex items-center z-50">
+                    <img src="logo.png" alt="Logo Gustavo Carvalho" class="h-14 w-auto object-contain drop-shadow-[0_0_10px_rgba(0,200,83,0.3)] hover:scale-105 transition duration-300">
                 </div>
                 
                 <!-- Menu Desktop -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#home" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium">Início</a>
-                        <a href="#sobre" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium">Sobre</a>
-                        <a href="#servicos" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium">Consultoria</a>
-                        <a href="#palestras" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium">Palestras</a>
-                        <a href="#contato" class="bg-gustavo-green text-gustavo-dark hover:bg-white transition px-5 py-2 rounded-full font-bold text-sm shadow-lg shadow-green-500/20">Fale Comigo</a>
+                        <a href="#home" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
+                            Início
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#sobre" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
+                            Sobre
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#servicos" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
+                            Consultoria
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#palestras" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
+                            Palestras
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#contato" class="bg-gustavo-green text-black hover:bg-white transition px-6 py-2.5 rounded-full font-bold text-sm shadow-[0_0_15px_rgba(0,200,83,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] btn-glow transform hover:-translate-y-0.5">Fale Comigo</a>
                     </div>
                 </div>
 
                 <!-- Menu Mobile Button -->
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                <div class="-mr-2 flex md:hidden z-50">
+                    <button type="button" onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 focus:outline-none transition">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -91,66 +209,85 @@
         </div>
 
         <!-- Menu Mobile -->
-        <div class="hidden md:hidden bg-gustavo-dark border-b border-gray-700" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gustavo-green">Início</a>
-                <a href="#sobre" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gustavo-green">Sobre</a>
-                <a href="#servicos" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gustavo-green">Consultoria</a>
-                <a href="#palestras" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gustavo-green">Palestras</a>
-                <a href="#contato" onclick="toggleMenu()" class="block px-3 py-2 text-gustavo-green font-bold">Fale Comigo</a>
+        <div class="hidden md:hidden glass-nav absolute w-full border-b border-gray-700 top-20 left-0 z-40 transition-all duration-300" id="mobile-menu">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#home" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Início</a>
+                <a href="#sobre" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Sobre</a>
+                <a href="#servicos" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Consultoria</a>
+                <a href="#palestras" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Palestras</a>
+                <a href="#contato" onclick="toggleMenu()" class="block px-3 py-3 text-gustavo-green font-bold bg-white/5 rounded-xl border border-gustavo-green/20">Fale Comigo</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-gustavo-green opacity-10 blur-3xl rounded-full"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-blue-500 opacity-5 blur-3xl rounded-full"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
                 
                 <!-- Texto Hero -->
-                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left reveal active">
-                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-gustavo-green/30 bg-gustavo-green/10 text-gustavo-green text-xs font-semibold tracking-wide uppercase mb-4">
-                        <i class="fas fa-bolt mr-2"></i> 1% Todo Dia
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left reveal active z-20">
+                    <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-gustavo-green/50 bg-gustavo-green/10 text-gustavo-green text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+                        <i class="fas fa-bolt mr-2 animate-pulse"></i> 1% Todo Dia
                     </div>
-                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-                        Ciência e Estratégia para o seu <span class="text-gradient">Emagrecimento</span>
+                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-tight">
+                        Ciência e Estratégia <br class="hidden lg:block"/> para o seu <span class="text-gradient block mt-2">Emagrecimento</span>
                     </h1>
-                    <p class="mt-4 text-lg text-gray-300 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0">
-                        Sou especialista em Biomecânica, Fisiologia do Exercício e Nutrição Esportiva. Chega de treinos genéricos. Tenha resultados reais com base científica.
+                    <p class="mt-6 text-lg text-gray-300 sm:mt-8 sm:max-w-xl sm:mx-auto md:mt-8 lg:mx-0 font-light leading-relaxed">
+                        Sou especialista em <strong class="text-white">Biomecânica, Fisiologia do Exercício</strong> e <strong class="text-white">Nutrição Esportiva</strong>. Chega de treinos genéricos. Tenha resultados reais com base científica.
                     </p>
-                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4">
-                        <a href="#servicos" class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-full text-gustavo-dark bg-gustavo-green hover:bg-white hover:scale-105 transition duration-300 shadow-lg shadow-green-500/30">
+                    <div class="mt-10 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-5">
+                        <a href="#servicos" class="group flex items-center justify-center px-8 py-4 text-base font-bold rounded-full text-black bg-gustavo-green hover:bg-white hover:scale-105 transition duration-300 shadow-[0_0_20px_rgba(0,200,83,0.5)] btn-glow">
                             Consultoria Fitness
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
                         </a>
-                        <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" class="flex items-center justify-center px-8 py-3 border border-gray-600 text-base font-medium rounded-full text-white hover:border-gustavo-green hover:text-gustavo-green transition duration-300">
+                        <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" class="flex items-center justify-center px-8 py-4 border border-gray-600 text-base font-medium rounded-full text-white hover:border-gustavo-green hover:text-gustavo-green hover:bg-gustavo-green/10 transition duration-300 backdrop-blur-sm">
                             <i class="fab fa-youtube mr-2"></i> Ver Canal
                         </a>
                     </div>
                     
                     <!-- Credenciais Rápidas -->
-                    <div class="mt-8 pt-6 border-t border-gray-800 flex flex-wrap gap-6 justify-center lg:justify-start text-gray-400 text-sm font-medium">
-                        <div class="flex items-center">
-                            <i class="fas fa-graduation-cap text-gustavo-green mr-2"></i> Ed. Física & Nutrição
+                    <div class="mt-10 pt-8 border-t border-gray-800/50 flex flex-wrap gap-8 justify-center lg:justify-start text-gray-400 text-sm font-medium">
+                        <div class="flex items-center hover:text-white transition cursor-default">
+                            <div class="w-8 h-8 rounded-full bg-gustavo-green/20 flex items-center justify-center mr-3">
+                                <i class="fas fa-graduation-cap text-gustavo-green"></i>
+                            </div>
+                            Ed. Física & Nutrição
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-university text-gustavo-green mr-2"></i> Mestrando Fisiologia UFMG
+                        <div class="flex items-center hover:text-white transition cursor-default">
+                            <div class="w-8 h-8 rounded-full bg-gustavo-green/20 flex items-center justify-center mr-3">
+                                <i class="fas fa-university text-gustavo-green"></i>
+                            </div>
+                            Mestrando Fisiologia UFMG
                         </div>
                     </div>
                 </div>
 
-                <!-- Imagem Hero (Placeholder visual baseado na foto dele) -->
-                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center reveal">
-                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                        <div class="relative block w-full bg-white rounded-2xl overflow-hidden shadow-2xl border-4 border-gustavo-green">
-                            <!-- Atualização da Imagem do Início -->
-                            <img class="w-full h-full object-cover transform hover:scale-105 transition duration-500" src="fotoinicio.png" alt="Treinador Gustavo Carvalho">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                                <p class="text-white font-bold text-xl">Treinador Gustavo Carvalho</p>
-                                <p class="text-gustavo-green text-sm">Personal Trainer & Nutricionista</p>
+                <!-- Imagem Hero (Flutuante e estilizada) -->
+                <div class="mt-16 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center reveal z-10">
+                    <div class="relative mx-auto w-full lg:max-w-md animate-float">
+                        <!-- Círculos decorativos atrás da imagem -->
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-gustavo-green rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-600 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+
+                        <div class="relative block w-full bg-gradient-to-br from-gray-800 to-black rounded-3xl overflow-hidden shadow-2xl border border-gray-700/50 group">
+                            <!-- Overlay de brilho no hover -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-gustavo-green/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 z-10 pointer-events-none"></div>
+                            
+                            <!-- Imagem -->
+                            <img class="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition duration-700 ease-out" src="fotoinicio.png" alt="Treinador Gustavo Carvalho">
+                            
+                            <!-- Card Info Flutuante -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent backdrop-blur-sm">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-white font-bold text-xl tracking-wide">Treinador Gustavo</p>
+                                        <p class="text-gustavo-green text-sm font-medium">Personal & Nutri</p>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-full bg-gustavo-green flex items-center justify-center text-black font-bold">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -160,48 +297,54 @@
     </section>
 
     <!-- Sobre / Metodologia -->
-    <section id="sobre" class="py-20 bg-gustavo-card">
+    <section id="sobre" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                    Por que escolher minha metodologia?
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
+                    Por que escolher minha <span class="text-gustavo-green relative inline-block">
+                        metodologia?
+                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-gustavo-green opacity-40" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7501 2.99999 84.8547 1.16677 198.001 3.50002" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                    </span>
                 </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-400 mx-auto">
-                    Não é achismo. É ciência aplicada ao resultado.
+                <p class="mt-6 max-w-2xl text-xl text-gray-400 mx-auto font-light">
+                    Não é achismo. É ciência aplicada ao resultado, com base em evidências e prática clínica.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Card 1 -->
-                <div class="bg-gustavo-dark p-8 rounded-2xl border border-gray-800 hover:border-gustavo-green transition duration-300 reveal group">
-                    <div class="w-14 h-14 bg-gustavo-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gustavo-green transition">
-                        <i class="fas fa-microscope text-2xl text-gustavo-green group-hover:text-gustavo-dark"></i>
+                <div class="glass-card p-10 rounded-3xl reveal relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-gustavo-green opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-gustavo-green to-green-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-green-900/40 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-microscope text-3xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Base Científica</h3>
-                    <p class="text-gray-400">
-                        Como mestrando em Fisiologia na UFMG, utilizo as mais recentes descobertas científicas para otimizar seu treino e dieta.
+                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gustavo-green transition">Base Científica</h3>
+                    <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition">
+                        Como mestrando em Fisiologia na UFMG, utilizo as mais recentes descobertas científicas para otimizar seu treino e dieta, fugindo do senso comum.
                     </p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-gustavo-dark p-8 rounded-2xl border border-gray-800 hover:border-gustavo-green transition duration-300 reveal group" style="transition-delay: 100ms;">
-                    <div class="w-14 h-14 bg-gustavo-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gustavo-green transition">
-                        <i class="fas fa-heartbeat text-2xl text-gustavo-green group-hover:text-gustavo-dark"></i>
+                <div class="glass-card p-10 rounded-3xl reveal relative overflow-hidden group" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-gustavo-green opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-gustavo-green to-green-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-green-900/40 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-heartbeat text-3xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Biomecânica & Fisiologia</h3>
-                    <p class="text-gray-400">
-                        Exercícios prescritos respeitando a mecânica do seu corpo para prevenir lesões e maximizar a hipertrofia e emagrecimento.
+                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gustavo-green transition">Biomecânica & Fisiologia</h3>
+                    <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition">
+                        Exercícios prescritos respeitando a mecânica do seu corpo para prevenir lesões e maximizar a hipertrofia e emagrecimento de forma segura.
                     </p>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-gustavo-dark p-8 rounded-2xl border border-gray-800 hover:border-gustavo-green transition duration-300 reveal group" style="transition-delay: 200ms;">
-                    <div class="w-14 h-14 bg-gustavo-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gustavo-green transition">
-                        <i class="fas fa-apple-alt text-2xl text-gustavo-green group-hover:text-gustavo-dark"></i>
+                <div class="glass-card p-10 rounded-3xl reveal relative overflow-hidden group" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-gustavo-green opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-gustavo-green to-green-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-green-900/40 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-apple-alt text-3xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Nutrição Integrada</h3>
-                    <p class="text-gray-400">
-                        O treino sozinho não faz milagre. Alinhamos estratégias nutricionais específicas para suportar sua rotina e objetivos.
+                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gustavo-green transition">Nutrição Integrada</h3>
+                    <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition">
+                        O treino sozinho não faz milagre. Alinhamos estratégias nutricionais específicas para suportar sua rotina, preferências e objetivos.
                     </p>
                 </div>
             </div>
@@ -209,58 +352,78 @@
     </section>
 
     <!-- Serviços -->
-    <section id="servicos" class="py-20 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 reveal">
-                <span class="text-gustavo-green font-bold tracking-wider uppercase text-sm">Planos e Consultoria</span>
-                <h2 class="mt-2 text-3xl font-extrabold text-white sm:text-4xl">Como posso te ajudar hoje?</h2>
+    <section id="servicos" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 reveal">
+                <span class="text-gustavo-green font-bold tracking-[0.2em] uppercase text-sm border border-gustavo-green/30 px-4 py-2 rounded-full bg-gustavo-green/5">Planos e Consultoria</span>
+                <h2 class="mt-8 text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">Como posso te ajudar hoje?</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
                 <!-- Consultoria Online -->
-                <div class="relative bg-gradient-to-b from-gray-800 to-gustavo-card rounded-3xl p-1 p-0.5 overflow-hidden reveal">
-                    <div class="bg-gustavo-dark rounded-[22px] p-8 h-full flex flex-col">
-                        <div class="flex justify-between items-start mb-6">
+                <div class="group relative bg-gradient-to-b from-gray-800 to-black rounded-[2.5rem] p-1 reveal hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition duration-500">
+                    <div class="bg-[#111] rounded-[2.4rem] p-10 h-full flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-gray-700 opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 group-hover:bg-gustavo-green transition duration-700"></div>
+                        
+                        <div class="flex justify-between items-start mb-8 relative z-10">
                             <div>
-                                <h3 class="text-2xl font-bold text-white">Consultoria Fitness</h3>
-                                <p class="text-gustavo-green font-medium">Online</p>
+                                <h3 class="text-3xl font-bold text-white mb-2">Consultoria Fitness</h3>
+                                <div class="inline-block bg-gray-800 text-gray-300 px-3 py-1 rounded-lg text-sm font-semibold border border-gray-700">Online</div>
                             </div>
-                            <i class="fas fa-laptop-medical text-3xl text-gray-500"></i>
+                            <div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center border border-gray-700 group-hover:border-gustavo-green transition duration-300">
+                                <i class="fas fa-laptop-medical text-2xl text-white group-hover:text-gustavo-green transition"></i>
+                            </div>
                         </div>
-                        <p class="text-gray-400 mb-6 flex-grow">
-                            Treino e dieta na palma da sua mão. Acompanhamento via app, análise de vídeos de execução e ajustes periódicos.
+                        
+                        <p class="text-gray-400 mb-8 flex-grow leading-relaxed">
+                            Treino e dieta na palma da sua mão. Acompanhamento via app, análise de vídeos de execução e ajustes periódicos baseados no seu feedback.
                         </p>
-                        <ul class="space-y-3 mb-8 text-gray-300 text-sm">
-                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Periodização personalizada</li>
-                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Suporte via WhatsApp</li>
-                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Prescrição nutricional</li>
+                        
+                        <ul class="space-y-4 mb-10 text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Periodização personalizada</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Suporte via WhatsApp</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Prescrição nutricional</li>
                         </ul>
-                        <a href="https://www.mfitpersonal.com.br/index?acao=page&tipo=1&page=31832&isCheckout=false" target="_blank" class="w-full block text-center bg-transparent border-2 border-gustavo-green text-gustavo-green font-bold py-3 rounded-xl hover:bg-gustavo-green hover:text-gustavo-dark transition">
+                        
+                        <a href="https://www.mfitpersonal.com.br/index?acao=page&tipo=1&page=31832&isCheckout=false" target="_blank" class="w-full block text-center border border-gray-600 text-white font-bold py-4 rounded-2xl hover:border-gustavo-green hover:bg-gustavo-green hover:text-black transition duration-300 transform group-hover:translate-y-1">
                             Saber Mais
                         </a>
                     </div>
                 </div>
 
-                <!-- Personal Trainer (Destaque) -->
-                <div class="relative bg-gustavo-green rounded-3xl p-0.5 overflow-hidden transform md:-translate-y-4 shadow-2xl shadow-green-900/50 reveal">
-                    <div class="absolute top-0 right-0 bg-white text-gustavo-dark text-xs font-bold px-3 py-1 rounded-bl-xl z-10">MAIS PROCURADO</div>
-                    <div class="bg-gustavo-card rounded-[22px] p-8 h-full flex flex-col relative">
-                        <div class="flex justify-between items-start mb-6">
+                <!-- Personal Trainer (Destaque Premium) -->
+                <div class="group relative rounded-[2.5rem] p-1 reveal transform md:-translate-y-6 hover:shadow-[0_0_40px_rgba(0,200,83,0.3)] transition duration-500">
+                    <!-- Borda Gradiente Animada -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-gustavo-green via-green-600 to-gustavo-green rounded-[2.5rem] opacity-80 blur-sm group-hover:blur-md transition duration-500"></div>
+                    
+                    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-50"></div>
+
+                    <div class="bg-[#0f0f0f] rounded-[2.4rem] p-10 h-full flex flex-col relative overflow-hidden border border-gustavo-green/20">
+                        <div class="absolute top-0 right-0 bg-gustavo-green text-black text-xs font-black px-4 py-2 rounded-bl-2xl z-20 tracking-wider uppercase">Mais Procurado</div>
+                        
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-gustavo-green opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 group-hover:opacity-20 transition duration-700"></div>
+
+                        <div class="flex justify-between items-start mb-8 relative z-10">
                             <div>
-                                <h3 class="text-2xl font-bold text-white">Personal Trainer</h3>
-                                <p class="text-gustavo-green font-medium">Presencial</p>
+                                <h3 class="text-3xl font-bold text-white mb-2">Personal Trainer</h3>
+                                <div class="inline-block bg-gustavo-green/20 text-gustavo-green px-3 py-1 rounded-lg text-sm font-semibold border border-gustavo-green/30">Presencial</div>
                             </div>
-                            <i class="fas fa-dumbbell text-3xl text-white"></i>
+                            <div class="w-14 h-14 bg-gustavo-green rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,200,83,0.4)]">
+                                <i class="fas fa-dumbbell text-2xl text-black"></i>
+                            </div>
                         </div>
-                        <p class="text-gray-400 mb-6 flex-grow">
-                            Acompanhamento presencial para extrair seu máximo. Correção biomecânica em tempo real e motivação.
+                        
+                        <p class="text-gray-300 mb-8 flex-grow leading-relaxed font-light">
+                            Acompanhamento presencial para extrair seu máximo. Correção biomecânica em tempo real, motivação e ajuste de carga preciso.
                         </p>
-                        <ul class="space-y-3 mb-8 text-gray-300 text-sm">
-                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Atendimento exclusivo</li>
-                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Avaliação física completa</li>
-                            <li class="flex items-center"><i class="fas fa-check text-gustavo-green mr-2"></i> Planejamento Nutricional incluso</li>
+                        
+                        <ul class="space-y-4 mb-10 text-white">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Atendimento exclusivo</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Avaliação física completa</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> <strong>Planejamento Nutricional</strong></li>
                         </ul>
-                        <a href="https://wa.me/5531999482018?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20saber%20sobre%20Personal%20Presencial." class="w-full block text-center bg-gustavo-green text-gustavo-dark font-bold py-3 rounded-xl hover:bg-white transition shadow-lg">
+                        
+                        <a href="https://wa.me/5531999482018?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20saber%20sobre%20Personal%20Presencial." class="w-full block text-center bg-gustavo-green text-black font-bold py-4 rounded-2xl hover:bg-white transition duration-300 shadow-[0_4px_20px_rgba(0,200,83,0.4)] btn-glow transform group-hover:translate-y-1">
                             Agendar Avaliação
                         </a>
                     </div>
@@ -270,65 +433,73 @@
     </section>
 
     <!-- Nova Seção: Palestras e Workshops -->
-    <section id="palestras" class="py-24 bg-gustavo-card relative">
-        <div class="absolute right-0 bottom-0 opacity-5 pointer-events-none">
-            <i class="fas fa-chalkboard-teacher text-9xl text-gustavo-green"></i>
+    <section id="palestras" class="py-24 relative z-10 overflow-hidden">
+        <!-- Fundo decorativo -->
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-black opacity-90"></div>
+        <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-x-1/4 translate-y-1/4">
+            <i class="fas fa-chalkboard-teacher text-[20rem] text-gustavo-green"></i>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
                 <!-- Conteúdo -->
-                <div class="mb-12 lg:mb-0 reveal">
-                    <span class="text-gustavo-green font-bold tracking-wider uppercase text-sm mb-2 block">Educação e Ciência</span>
-                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl mb-6">
-                        Leve Conhecimento Científico para o seu Evento
+                <div class="mb-16 lg:mb-0 reveal">
+                    <span class="text-gustavo-green font-bold tracking-widest uppercase text-sm mb-4 block">Educação e Ciência</span>
+                    <h2 class="text-4xl font-extrabold text-white sm:text-5xl mb-8 leading-tight">
+                        Leve Conhecimento <span class="text-transparent bg-clip-text bg-gradient-to-r from-gustavo-green to-white">Científico</span> para o seu Evento
                     </h2>
-                    <p class="text-lg text-gray-300 mb-6">
+                    <p class="text-lg text-gray-300 mb-10 leading-relaxed font-light">
                         Compartilho minha experiência acadêmica (Mestrando UFMG) e prática através de palestras e workshops dinâmicos. Ideal para academias, universidades, grupos de estudos e eventos fitness.
                     </p>
                     
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gustavo-dark border border-gray-700 flex items-center justify-center text-gustavo-green">
-                                <i class="fas fa-running"></i>
+                    <div class="space-y-6 mb-10">
+                        <div class="flex items-start group">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-gustavo-green group-hover:bg-gustavo-green group-hover:text-black transition duration-300">
+                                <i class="fas fa-running text-xl"></i>
                             </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-white">Biomecânica Aplicada</h4>
-                                <p class="text-gray-400 text-sm">Prevenção de lesões e otimização do movimento.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gustavo-dark border border-gray-700 flex items-center justify-center text-gustavo-green">
-                                <i class="fas fa-burn"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-white">Fisiologia do Emagrecimento</h4>
-                                <p class="text-gray-400 text-sm">Estratégias metabólicas baseadas em evidências.</p>
+                            <div class="ml-6">
+                                <h4 class="text-xl font-bold text-white group-hover:text-gustavo-green transition">Biomecânica Aplicada</h4>
+                                <p class="text-gray-400 text-sm mt-1">Prevenção de lesões e otimização do movimento.</p>
                             </div>
                         </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gustavo-dark border border-gray-700 flex items-center justify-center text-gustavo-green">
-                                <i class="fas fa-clipboard-list"></i>
+                        <div class="flex items-start group">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-gustavo-green group-hover:bg-gustavo-green group-hover:text-black transition duration-300">
+                                <i class="fas fa-burn text-xl"></i>
                             </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-white">Periodização de Treinamento</h4>
-                                <p class="text-gray-400 text-sm">Como estruturar treinos de longo prazo.</p>
+                            <div class="ml-6">
+                                <h4 class="text-xl font-bold text-white group-hover:text-gustavo-green transition">Fisiologia do Emagrecimento</h4>
+                                <p class="text-gray-400 text-sm mt-1">Estratégias metabólicas baseadas em evidências.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start group">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-gustavo-green group-hover:bg-gustavo-green group-hover:text-black transition duration-300">
+                                <i class="fas fa-clipboard-list text-xl"></i>
+                            </div>
+                            <div class="ml-6">
+                                <h4 class="text-xl font-bold text-white group-hover:text-gustavo-green transition">Periodização de Treinamento</h4>
+                                <p class="text-gray-400 text-sm mt-1">Como estruturar treinos de longo prazo.</p>
                             </div>
                         </div>
                     </div>
 
-                    <a href="https://wa.me/5531999482018?text=Ol%C3%A1%2C%20Gustavo!%20Gostaria%20de%20saber%20sobre%20palestras%20e%20workshops." class="inline-flex items-center px-6 py-3 border border-gustavo-green text-base font-bold rounded-full text-gustavo-green hover:bg-gustavo-green hover:text-gustavo-dark transition duration-300">
+                    <a href="https://wa.me/5531999482018?text=Ol%C3%A1%2C%20Gustavo!%20Gostaria%20de%20saber%20sobre%20palestras%20e%20workshops." class="inline-flex items-center px-8 py-4 border border-gustavo-green text-base font-bold rounded-full text-gustavo-green hover:bg-gustavo-green hover:text-black transition duration-300 shadow-[0_0_15px_rgba(0,200,83,0.2)] hover:shadow-[0_0_25px_rgba(0,200,83,0.6)]">
                         <i class="far fa-calendar-alt mr-2"></i> Solicitar Orçamento
                     </a>
                 </div>
 
-                <!-- Imagem Ilustrativa -->
-                <div class="relative reveal">
-                    <div class="rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
-                        <img src="fotopalestra.png" alt="Palestra Fitness" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gustavo-dark via-transparent to-transparent"></div>
-                        <div class="absolute bottom-6 left-6">
-                            <p class="text-white font-bold text-lg">Workshops Práticos</p>
+                <!-- Imagem Ilustrativa 3D -->
+                <div class="relative reveal perspective-1000">
+                    <div class="absolute inset-0 bg-gustavo-green blur-[60px] opacity-20"></div>
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-700 group transform transition duration-700 hover:rotate-y-12 hover:scale-105">
+                        <img src="fotopalestra.png" alt="Palestra Fitness" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500 scale-100 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                        
+                        <!-- Badge Flutuante -->
+                        <div class="absolute bottom-8 left-8 backdrop-blur-md bg-white/10 p-6 rounded-2xl border border-white/10 group-hover:bg-black/80 transition duration-300">
+                            <p class="text-white font-bold text-xl mb-1 flex items-center">
+                                <span class="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></span>
+                                Workshops Práticos
+                            </p>
                             <p class="text-gray-300 text-sm">Teoria e prática lado a lado.</p>
                         </div>
                     </div>
@@ -338,19 +509,22 @@
     </section>
 
     <!-- Call to Action Final -->
-    <section class="py-20 bg-gustavo-green">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <h2 class="text-3xl font-extrabold text-gustavo-dark sm:text-4xl mb-6">
-                Pronto para fazer o seu 1% de hoje?
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gustavo-green transform -skew-y-3 origin-bottom-left scale-110"></div>
+        <div class="absolute inset-0 bg-pattern opacity-10"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 reveal">
+            <h2 class="text-4xl font-extrabold text-black sm:text-5xl mb-6 tracking-tight">
+                Pronto para fazer o seu <span class="text-white drop-shadow-md">1% de hoje?</span>
             </h2>
-            <p class="text-xl text-green-900 mb-10 font-medium">
+            <p class="text-xl text-black/80 mb-12 font-medium max-w-2xl mx-auto">
                 Não espere a "segunda-feira" para mudar sua vida. A ciência e a estratégia que você precisa estão a um clique de distância.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://wa.me/5531999482018" class="flex items-center justify-center px-8 py-4 bg-gustavo-dark text-white font-bold rounded-full text-lg hover:scale-105 transition shadow-xl">
-                    <i class="fab fa-whatsapp mr-2 text-2xl"></i> Falar no WhatsApp
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="https://wa.me/5531999482018" class="flex items-center justify-center px-10 py-5 bg-black text-white font-bold rounded-full text-lg hover:scale-105 transition shadow-2xl btn-glow border border-transparent hover:border-white/20">
+                    <i class="fab fa-whatsapp mr-2 text-2xl text-green-400"></i> Falar no WhatsApp
                 </a>
-                <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="flex items-center justify-center px-8 py-4 bg-white/20 border-2 border-gustavo-dark text-gustavo-dark font-bold rounded-full text-lg hover:bg-gustavo-dark hover:text-white transition">
+                <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="flex items-center justify-center px-10 py-5 bg-white/20 backdrop-blur-sm border-2 border-black text-black font-bold rounded-full text-lg hover:bg-black hover:text-white transition shadow-xl">
                     <i class="fab fa-instagram mr-2 text-2xl"></i> Seguir no Instagram
                 </a>
             </div>
@@ -358,35 +532,39 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contato" class="bg-gustavo-card pt-12 pb-8 border-t border-gray-800">
+    <footer id="contato" class="bg-[#050505] pt-16 pb-10 border-t border-gray-900 relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <img src="logo.png" alt="Logo Gustavo Carvalho" class="h-16 w-auto object-contain mb-4">
-                    <p class="text-gray-500 text-sm mt-2">© 2025 Todos os direitos reservados.</p>
+                <div class="mb-8 md:mb-0 text-center md:text-left">
+                    <img src="logo.png" alt="Logo Gustavo Carvalho" class="h-16 w-auto object-contain mb-6 mx-auto md:mx-0 opacity-80 hover:opacity-100 transition">
+                    <p class="text-gray-500 text-sm">© 2025 Gustavo Carvalho. Todos os direitos reservados.</p>
+                    <p class="text-gray-600 text-xs mt-1">Alta Performance e Saúde.</p>
                 </div>
                 
-                <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="text-gray-400 hover:text-gustavo-green transition">
-                        <i class="fab fa-instagram text-2xl"></i>
+                <div class="flex space-x-8">
+                    <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 transition duration-300 transform hover:-translate-y-1">
+                        <i class="fab fa-instagram text-xl"></i>
                     </a>
-                    <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" class="text-gray-400 hover:text-gustavo-green transition">
-                        <i class="fab fa-youtube text-2xl"></i>
+                    <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" class="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-600 transition duration-300 transform hover:-translate-y-1">
+                        <i class="fab fa-youtube text-xl"></i>
                     </a>
-                    <a href="https://wa.me/5531999482018" class="text-gray-400 hover:text-gustavo-green transition">
-                        <i class="fab fa-whatsapp text-2xl"></i>
+                    <a href="https://wa.me/5531999482018" class="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-500 transition duration-300 transform hover:-translate-y-1">
+                        <i class="fab fa-whatsapp text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-gustavo-green transition">
-                        <i class="far fa-envelope text-2xl"></i>
+                    <a href="#" class="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500 transition duration-300 transform hover:-translate-y-1">
+                        <i class="far fa-envelope text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Botão Flutuante WhatsApp -->
-    <a href="https://wa.me/5531999482018" class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 hover:scale-110 transition duration-300 animate-bounce">
-        <i class="fab fa-whatsapp text-3xl"></i>
+    <!-- Botão Flutuante WhatsApp (Pulsante) -->
+    <a href="https://wa.me/5531999482018" class="fixed bottom-8 right-8 z-50 group">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
+        <div class="relative bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,200,83,0.6)] hover:bg-green-600 hover:scale-110 transition duration-300">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </div>
     </a>
 
     <!-- Scripts Javascript -->
@@ -396,37 +574,42 @@
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
+                menu.classList.add('block');
             } else {
                 menu.classList.add('hidden');
+                menu.classList.remove('block');
             }
         }
 
-        // Lógica de Scroll Reveal (Animação ao rolar)
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
+        // Lógica Avançada de Scroll Reveal usando Intersection Observer
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
 
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
                 }
-            }
-        }
+            });
+        }, observerOptions);
 
-        window.addEventListener("scroll", reveal);
-        // Ativar reveal no carregamento inicial
-        reveal();
+        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
         // Smooth Scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Fechar menu mobile se estiver aberto
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
             });
         });
     </script>
