@@ -65,6 +65,7 @@
         /* Scrollbar Personalizada */
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px; /* Altura para scroll horizontal */
         }
         ::-webkit-scrollbar-track {
             background: #0a0a0a;
@@ -191,6 +192,10 @@
                             Consultoria
                             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
                         </a>
+                        <a href="#resultados" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
+                            Resultados
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                         <a href="#palestras" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
                             Palestras
                             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
@@ -214,6 +219,7 @@
                 <a href="#home" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Início</a>
                 <a href="#sobre" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Sobre</a>
                 <a href="#servicos" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Consultoria</a>
+                <a href="#resultados" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Resultados</a>
                 <a href="#palestras" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Palestras</a>
                 <a href="#contato" onclick="toggleMenu()" class="block px-3 py-3 text-gustavo-green font-bold bg-white/5 rounded-xl border border-gustavo-green/20">Fale Comigo</a>
             </div>
@@ -228,13 +234,13 @@
                 <!-- Texto Hero -->
                 <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left reveal active z-20">
                     <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-gustavo-green/50 bg-gustavo-green/10 text-gustavo-green text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
-                        <i class="fas fa-bolt mr-2 animate-pulse"></i> 1% Todo Dia
+                        <i class="fas fa-bolt mr-2 animate-pulse"></i> Muito além de calorias
                     </div>
                     <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-tight">
-                        Ciência e Estratégia <br class="hidden lg:block"/> para o seu <span class="text-gradient block mt-2">Emagrecimento</span>
+                        Método Sem Achismo — <span class="text-gradient block mt-2">Nutrição e Treino Baseados em Ciência</span>
                     </h1>
                     <p class="mt-6 text-lg text-gray-300 sm:mt-8 sm:max-w-xl sm:mx-auto md:mt-8 lg:mx-0 font-light leading-relaxed">
-                        Sou especialista em <strong class="text-white">Biomecânica, Fisiologia do Exercício</strong> e <strong class="text-white">Nutrição Esportiva</strong>. Chega de treinos genéricos. Tenha resultados reais com base científica.
+                        Desenvolvido por <strong class="text-white">Gustavo Carvalho</strong>, Especialista em Fisiologia do Exercício, Nutrição Esportiva e Biomecânica. Com mais de <strong class="text-white">10 anos de experiência</strong> e mais de <strong class="text-white">400 pessoas atendidas</strong>.
                     </p>
                     <div class="mt-10 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-5">
                         <a href="#servicos" class="group flex items-center justify-center px-8 py-4 text-base font-bold rounded-full text-black bg-gustavo-green hover:bg-white hover:scale-105 transition duration-300 shadow-[0_0_20px_rgba(0,200,83,0.5)] btn-glow">
@@ -258,7 +264,7 @@
                             <div class="w-8 h-8 rounded-full bg-gustavo-green/20 flex items-center justify-center mr-3">
                                 <i class="fas fa-university text-gustavo-green"></i>
                             </div>
-                            Mestrando Fisiologia UFMG
+                            Fisiologia do Exercício
                         </div>
                     </div>
                 </div>
@@ -320,7 +326,7 @@
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gustavo-green transition">Base Científica</h3>
                     <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition">
-                        Como mestrando em Fisiologia na UFMG, utilizo as mais recentes descobertas científicas para otimizar seu treino e dieta, fugindo do senso comum.
+                        Ao longo desses 10 anos de profissão, venho estudando continuamente o que realmente funciona, baseado nas melhores evidências e pesquisas científicas.
                     </p>
                 </div>
 
@@ -385,7 +391,7 @@
                             <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Prescrição nutricional</li>
                         </ul>
                         
-                        <a href="https://www.mfitpersonal.com.br/index?acao=page&tipo=1&page=31832&isCheckout=false" target="_blank" class="w-full block text-center border border-gray-600 text-white font-bold py-4 rounded-2xl hover:border-gustavo-green hover:bg-gustavo-green hover:text-black transition duration-300 transform group-hover:translate-y-1">
+                        <a href="https://wa.me/5531999482018?text=Ol%C3%A1%2C%20Gustavo!%20Tenho%20interesse%20na%20Consultoria%20Fitness." target="_blank" class="w-full block text-center border border-gray-600 text-white font-bold py-4 rounded-2xl hover:border-gustavo-green hover:bg-gustavo-green hover:text-black transition duration-300 transform group-hover:translate-y-1">
                             Saber Mais
                         </a>
                     </div>
@@ -431,6 +437,147 @@
             </div>
         </div>
     </section>
+    
+    <!-- Nova Seção: Antes e Depois -->
+    <section id="resultados" class="py-24 relative z-10 bg-black/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gustavo-green font-bold tracking-[0.2em] uppercase text-sm border border-gustavo-green/30 px-4 py-2 rounded-full bg-gustavo-green/5">Resultados Reais</span>
+                <h2 class="mt-6 text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
+                    Transformações de <span class="text-gradient">Vida</span>
+                </h2>
+                <p class="mt-6 max-w-2xl text-xl text-gray-400 mx-auto font-light">
+                    Veja o que acontece quando unimos ciência, disciplina e a estratégia certa.
+                </p>
+            </div>
+
+            <!-- Slider Container com Setas -->
+            <div class="relative max-w-2xl mx-auto reveal group/slider">
+                
+                <!-- Botão Anterior -->
+                <button id="prev-result" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 bg-gustavo-green/10 hover:bg-gustavo-green text-gustavo-green hover:text-black w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md border border-gustavo-green/30 transition-all duration-300 opacity-0 group-hover/slider:opacity-100 focus:opacity-100">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+
+                <!-- Botão Próximo -->
+                <button id="next-result" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 bg-gustavo-green/10 hover:bg-gustavo-green text-gustavo-green hover:text-black w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md border border-gustavo-green/30 transition-all duration-300 opacity-0 group-hover/slider:opacity-100 focus:opacity-100">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+
+                <!-- Área de Rolagem -->
+                <div id="results-slider" class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide" style="scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none;">
+                    
+                    <!-- Transformação 1 -->
+                    <div class="w-full flex-shrink-0 snap-center glass-card rounded-3xl overflow-hidden group">
+                        <!-- Aspect Ratio Ajustado para 3:4 em cada imagem (Total 6:4 = 3:2) -->
+                        <div class="relative w-full aspect-[3/2] overflow-hidden bg-gray-900">
+                             <!-- Placeholders para imagens de antes e depois -->
+                            <div class="absolute inset-0 flex">
+                                <div class="w-1/2 h-full relative border-r border-gray-800">
+                                    <img src="antes1.png" alt="Antes" class="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 transition duration-700">
+                                    <span class="absolute top-4 left-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">ANTES</span>
+                                </div>
+                                <div class="w-1/2 h-full relative">
+                                    <img src="depois1.png" alt="Depois" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                    <span class="absolute top-4 right-4 bg-gustavo-green text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">DEPOIS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-xl font-bold text-white">Hipertrofia e Definição</h4>
+                                <div class="flex text-gustavo-green text-xs">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm italic">"Seguiu o plano à risca e os resultados apareceram mais rápido do que ele imaginava, apenas corrigindo a saúde intestinal."</p>
+                        </div>
+                    </div>
+
+                    <!-- Transformação 2 -->
+                    <div class="w-full flex-shrink-0 snap-center glass-card rounded-3xl overflow-hidden group">
+                        <div class="relative w-full aspect-[3/2] overflow-hidden bg-gray-900">
+                             <div class="absolute inset-0 flex">
+                                <div class="w-1/2 h-full relative border-r border-gray-800">
+                                    <img src="antes2.png" alt="Antes" class="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 transition duration-700">
+                                    <span class="absolute top-4 left-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">ANTES</span>
+                                </div>
+                                <div class="w-1/2 h-full relative">
+                                    <img src="depois2.png" alt="Depois" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                    <span class="absolute top-4 right-4 bg-gustavo-green text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">DEPOIS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-xl font-bold text-white">Emagrecimento Saudável</h4>
+                                <div class="flex text-gustavo-green text-xs">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm italic">"Perdeu 20 kg combinando estratégias nutricionais e de treino. A metodologia é realmente eficiente."</p>
+                        </div>
+                    </div>
+
+                    <!-- Transformação 3 -->
+                    <div class="w-full flex-shrink-0 snap-center glass-card rounded-3xl overflow-hidden group">
+                        <div class="relative w-full aspect-[3/2] overflow-hidden bg-gray-900">
+                             <div class="absolute inset-0 flex">
+                                <div class="w-1/2 h-full relative border-r border-gray-800">
+                                    <img src="antes3.png" alt="Antes" class="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 transition duration-700">
+                                    <span class="absolute top-4 left-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">ANTES</span>
+                                </div>
+                                <div class="w-1/2 h-full relative">
+                                    <img src="depois3.png" alt="Depois" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                    <span class="absolute top-4 right-4 bg-gustavo-green text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">DEPOIS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-xl font-bold text-white">Recomposição Corporal</h4>
+                                <div class="flex text-gustavo-green text-xs">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm italic">"Resultados consistentes com reeducação alimentar e treino de força focado."</p>
+                        </div>
+                    </div>
+
+                    <!-- Transformação 4 -->
+                    <div class="w-full flex-shrink-0 snap-center glass-card rounded-3xl overflow-hidden group">
+                        <div class="relative w-full aspect-[3/2] overflow-hidden bg-gray-900">
+                             <div class="absolute inset-0 flex">
+                                <div class="w-1/2 h-full relative border-r border-gray-800">
+                                    <img src="antes4.png" alt="Antes" class="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 transition duration-700">
+                                    <span class="absolute top-4 left-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">ANTES</span>
+                                </div>
+                                <div class="w-1/2 h-full relative">
+                                    <img src="depois4.png" alt="Depois" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                    <span class="absolute top-4 right-4 bg-gustavo-green text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">DEPOIS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-xl font-bold text-white">Mudança de Estilo de Vida</h4>
+                                <div class="flex text-gustavo-green text-xs">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm italic">"Mais disposição, saúde e autoestima renovada através de um método sustentável."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center reveal">
+                 <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="inline-flex items-center text-gustavo-green hover:text-white transition font-bold border-b border-gustavo-green pb-1">
+                    Ver mais resultados no Instagram <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Nova Seção: Palestras e Workshops -->
     <section id="palestras" class="py-24 relative z-10 overflow-hidden">
@@ -449,7 +596,7 @@
                         Leve Conhecimento <span class="text-transparent bg-clip-text bg-gradient-to-r from-gustavo-green to-white">Científico</span> para o seu Evento
                     </h2>
                     <p class="text-lg text-gray-300 mb-10 leading-relaxed font-light">
-                        Compartilho minha experiência acadêmica (Mestrando UFMG) e prática através de palestras e workshops dinâmicos. Ideal para academias, universidades, grupos de estudos e eventos fitness.
+                        Compartilho minha experiência acadêmica e prática através de palestras e workshops dinâmicos. Ideal para academias, universidades, grupos de estudos e eventos fitness.
                     </p>
                     
                     <div class="space-y-6 mb-10">
@@ -487,15 +634,27 @@
                     </a>
                 </div>
 
-                <!-- Imagem Ilustrativa 3D -->
+                <!-- Imagem Ilustrativa 3D (Slider de Palestras) -->
                 <div class="relative reveal perspective-1000">
                     <div class="absolute inset-0 bg-gustavo-green blur-[60px] opacity-20"></div>
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-700 group transform transition duration-700 hover:rotate-y-12 hover:scale-105">
-                        <img src="fotopalestra.png" alt="Palestra Fitness" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500 scale-100 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-700 group transform transition duration-700 hover:rotate-y-12 hover:scale-105" id="palestra-slider">
+                        
+                        <!-- Slide 1 (Relative: Define altura) -->
+                        <img src="fotopalestra.png" alt="Palestra Fitness 1" class="relative w-full h-full object-cover transition-opacity duration-1000 opacity-100 z-0">
+                        
+                        <!-- Slide 2 -->
+                        <img src="fotopalestra2.png" alt="Palestra Fitness 2" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
+                        
+                        <!-- Slide 3 -->
+                        <img src="fotopalestra3.png" alt="Palestra Fitness 3" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
+                        
+                        <!-- Slide 4 -->
+                        <img src="fotopalestra4.png" alt="Palestra Fitness 4" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 pointer-events-none"></div>
                         
                         <!-- Badge Flutuante -->
-                        <div class="absolute bottom-8 left-8 backdrop-blur-md bg-white/10 p-6 rounded-2xl border border-white/10 group-hover:bg-black/80 transition duration-300">
+                        <div class="absolute bottom-8 left-8 backdrop-blur-md bg-white/10 p-6 rounded-2xl border border-white/10 group-hover:bg-black/80 transition duration-300 z-20">
                             <p class="text-white font-bold text-xl mb-1 flex items-center">
                                 <span class="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></span>
                                 Workshops Práticos
@@ -515,10 +674,10 @@
         
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 reveal">
             <h2 class="text-4xl font-extrabold text-black sm:text-5xl mb-6 tracking-tight">
-                Pronto para fazer o seu <span class="text-white drop-shadow-md">1% de hoje?</span>
+                Pronto para começar <span class="text-white drop-shadow-md">o que realmente funciona?</span>
             </h2>
             <p class="text-xl text-black/80 mb-12 font-medium max-w-2xl mx-auto">
-                Não espere a "segunda-feira" para mudar sua vida. A ciência e a estratégia que você precisa estão a um clique de distância.
+                Seu corpo é fisiologia — e precisa de métodos que respeitem isso. Nutrição, treino e estratégia baseados em ciência começam com um clique.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-6">
                 <a href="https://wa.me/5531999482018" class="flex items-center justify-center px-10 py-5 bg-black text-white font-bold rounded-full text-lg hover:scale-105 transition shadow-2xl btn-glow border border-transparent hover:border-white/20">
@@ -611,6 +770,43 @@
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
+        });
+
+        // Lógica de Navegação do Slider de Resultados (Antes e Depois)
+        const resultSlider = document.getElementById('results-slider');
+        const prevBtn = document.getElementById('prev-result');
+        const nextBtn = document.getElementById('next-result');
+
+        if(resultSlider && prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                resultSlider.scrollBy({ left: -resultSlider.offsetWidth, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                resultSlider.scrollBy({ left: resultSlider.offsetWidth, behavior: 'smooth' });
+            });
+        }
+
+        // Carousel Palestras
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderImages = document.querySelectorAll('#palestra-slider img');
+            let currentImageIndex = 0;
+            
+            // Verifica se as imagens existem para evitar erro
+            if(sliderImages.length > 0) {
+                setInterval(() => {
+                    // Remove opacidade da atual
+                    sliderImages[currentImageIndex].classList.remove('opacity-100');
+                    sliderImages[currentImageIndex].classList.add('opacity-0');
+                    
+                    // Incrementa índice (com loop)
+                    currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
+                    
+                    // Adiciona opacidade na próxima
+                    sliderImages[currentImageIndex].classList.remove('opacity-0');
+                    sliderImages[currentImageIndex].classList.add('opacity-100');
+                }, 5000); // 5000ms = 5 segundos
+            }
         });
     </script>
 </body>
