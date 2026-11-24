@@ -1,831 +1,273 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<!doctype html>
+<html lang="pt-BR" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gustavo Carvalho | Treinador e Nutricionista</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome (Ícones) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Configurações Personalizadas do Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'gustavo-green': '#00c853',
-                        'gustavo-green-light': '#69f0ae',
-                        'gustavo-dark': '#0a0a0a', 
-                        'gustavo-card': '#141414',
-                    },
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-glow': 'pulse-glow 2s infinite',
-                        'spin-slow': 'spin 15s linear infinite',
-                        'blob': 'blob 7s infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        'pulse-glow': {
-                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(0, 200, 83, 0.4)' },
-                            '70%': { boxShadow: '0 0 0 15px rgba(0, 200, 83, 0)' },
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Estilos Globais e Utilitários */
-        body {
-            overflow-x: hidden;
-            background-color: #050505;
-        }
-
-        /* Scrollbar Personalizada */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px; /* Altura para scroll horizontal */
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00c853;
-        }
-
-        /* Animações de Entrada (Scroll Reveal) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px) scale(0.95);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-            filter: blur(10px);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-        }
-        
-        /* Gradiente no Texto Animado */
-        .text-gradient {
-            background: linear-gradient(to right, #00c853, #b9f6ca, #00c853);
-            background-size: 200% auto;
-            color: #000;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 4s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Glassmorphism Premium */
-        .glass-nav {
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .glass-card {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(0, 200, 83, 0.5);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px -10px rgba(0, 200, 83, 0.15);
-            background: rgba(30, 30, 30, 0.8);
-        }
-
-        /* Efeito Glow nos Botões */
-        .btn-glow {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .btn-glow::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        .btn-glow:hover::after {
-            left: 100%;
-        }
-
-        /* Background Dinâmico (Blobs) */
-        .bg-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: 0;
-            animation: blob 10s infinite;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gustavo Carvalho | Personal Trainer e Nutricionista</title>
+<meta name="description" content="Método Sem Achismo: nutrição e treino baseados em ciência com Gustavo Carvalho, personal trainer e nutricionista, mestrando em Fisiologia na UFMG. Consultoria online e personal presencial.">
+<meta name="theme-color" content="#070908">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gustavo Carvalho | Método Sem Achismo">
+<meta property="og:description" content="Nutrição e treino baseados em ciência. Mais de 10 anos de experiência e 400 pessoas atendidas.">
+<meta property="og:image" content="https://gustavocarvalhotrainer.com/assets/img/compartilhar.jpg">
+<meta property="og:url" content="https://gustavocarvalhotrainer.com/">
+<link rel="canonical" href="https://gustavocarvalhotrainer.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500..900&family=Inter:wght@400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/gustavo-topo.webp" imagesrcset="assets/img/gustavo-topo-820.webp 820w, assets/img/gustavo-topo.webp 1621w" imagesizes="(max-width: 899px) 90vw, 48vw">
+<link rel="stylesheet" href="assets/vendor/lenis.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>
+  document.documentElement.classList.replace('no-js', 'js');
+  try { if (sessionStorage.getItem('gc-abertura') || matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('sem-abertura'); } catch (e) {}
+</script>
 </head>
-<body class="text-white font-sans antialiased selection:bg-gustavo-green selection:text-white">
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-    <!-- Background Animado Global -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="bg-blob bg-gustavo-green w-96 h-96 top-0 -left-20 mix-blend-screen"></div>
-        <div class="bg-blob bg-blue-600 w-96 h-96 bottom-0 -right-20 mix-blend-screen animation-delay-2000"></div>
-        <div class="bg-blob bg-purple-600 w-72 h-72 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-screen animation-delay-4000 opacity-20"></div>
+<!-- Abertura: uma linha verde corre e a cortina sobe (só na primeira visita da sessão) -->
+<div class="abertura" aria-hidden="true">
+  <img class="abertura_logo" src="assets/img/logo.png" width="1061" height="152" alt="">
+  <span class="abertura_barra"><i></i></span>
+</div>
+
+<header class="nav" data-nav>
+  <a class="nav_logo" href="#inicio" aria-label="Gustavo Carvalho, voltar ao início"><img src="assets/img/logo.png" width="1061" height="152" alt=""></a>
+  <nav class="nav_links" aria-label="Seções">
+    <a href="#metodo">Método</a>
+    <a href="#planos">Planos</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#palestras">Palestras</a>
+  </nav>
+  <div class="nav_acoes">
+    <a class="nav_membros" href="https://metodo-treinamento.vercel.app" target="_blank" rel="noopener noreferrer">Área de Membros</a>
+    <a class="btn btn--verde btn--peq" href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">Agendar<span class="so-pc"> avaliação</span></a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- 1. TOPO -->
+  <section class="topo" id="inicio">
+    <div class="topo_fundo" aria-hidden="true"></div>
+    <p class="topo_nome" aria-hidden="true"><span>GUSTAVO</span><span>CARVALHO</span></p>
+    <img class="topo_foto" src="assets/img/gustavo-topo.webp" srcset="assets/img/gustavo-topo-820.webp 820w, assets/img/gustavo-topo.webp 1621w" sizes="(max-width: 899px) 90vw, 48vw" width="1621" height="1973" alt="Gustavo Carvalho, personal trainer e nutricionista, de braços cruzados" fetchpriority="high">
+
+    <div class="wrap topo_in">
+      <div class="topo_texto">
+        <p class="rotulo" data-entra>Personal trainer e nutricionista</p>
+        <h1 class="topo_titulo" data-linhas>Método<br>sem achismo</h1>
+        <p class="topo_lead" data-entra>Nutrição e treino baseados em ciência, pensados para o seu corpo, a sua rotina e o seu objetivo.</p>
+        <div class="topo_acoes" data-entra>
+          <a class="btn btn--verde" href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Tenho%20interesse%20na%20Consultoria%20Fitness." target="_blank" rel="noopener noreferrer">Consultoria Fitness <span aria-hidden="true">→</span></a>
+          <a class="link" href="#planos">Ver planos</a>
+        </div>
+      </div>
+      <div class="numeros">
+        <div class="numero numero--cheio" data-entra>
+          <p class="numero_v"><span data-conta="10">10</span>+</p>
+          <p>Anos de experiência estudando o que realmente funciona.</p>
+        </div>
+        <div class="numero" data-entra>
+          <p class="numero_v"><span data-conta="400">400</span>+</p>
+          <p>Pessoas atendidas, do iniciante a quem já treina pesado.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Navegação -->
-    <nav class="fixed w-full z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center z-50">
-                    <img src="logo.png" alt="Logo Gustavo Carvalho" class="h-14 w-auto object-contain drop-shadow-[0_0_10px_rgba(0,200,83,0.3)] hover:scale-105 transition duration-300">
-                </div>
-                
-                <!-- Menu Desktop -->
-                <div class="hidden md:flex md:flex-1 md:justify-end md:items-center">
-                    <div class="flex items-baseline space-x-6 mr-6">
-                        <a href="#home" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
-                            Início
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#sobre" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
-                            Sobre
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#servicos" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
-                            Consultoria
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#resultados" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
-                            Resultados
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#palestras" class="hover:text-gustavo-green transition px-3 py-2 rounded-md text-sm font-medium tracking-wide relative group">
-                            Palestras
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gustavo-green transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                    </div>
-                    <div class="flex items-center space-x-4 border-l border-gray-700 pl-6">
-                        <a href="https://metodo-treinamento.vercel.app" target="_blank" class="hover:text-white text-gray-300 transition px-3 py-2 rounded-md text-sm font-medium flex items-center group">
-                            <i class="fas fa-user-circle mr-2 text-gustavo-green group-hover:scale-110 transition"></i> Área de Membros
-                        </a>
-                        <!-- Atualizado para link direto do WhatsApp -->
-                        <a href="https://wa.me/5531982049721" class="bg-gustavo-green text-black hover:bg-white transition px-6 py-2.5 rounded-full font-bold text-sm shadow-[0_0_15px_rgba(0,200,83,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] btn-glow transform hover:-translate-y-0.5">Fale Comigo</a>
-                    </div>
-                </div>
+  <!-- Faixa de formação -->
+  <div class="faixa" aria-label="Formação">
+    <div class="faixa_trilho">
+      <ul class="faixa_lista"><li>Especialista em Fisiologia do Exercício</li><li>Nutrição Esportiva</li><li>Biomecânica</li><li>Mestrando em Fisiologia na UFMG</li></ul>
+      <ul class="faixa_lista" aria-hidden="true"><li>Especialista em Fisiologia do Exercício</li><li>Nutrição Esportiva</li><li>Biomecânica</li><li>Mestrando em Fisiologia na UFMG</li></ul>
+    </div>
+  </div>
 
-                <!-- Menu Mobile Button -->
-                <div class="-mr-2 flex md:hidden z-50">
-                    <button type="button" onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 focus:outline-none transition">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
+  <!-- 2. MÉTODO -->
+  <section class="secao" id="metodo">
+    <div class="wrap">
+      <div class="cabeca">
+        <div>
+          <p class="rotulo">Por que esta metodologia</p>
+          <h2 class="titulo" data-linhas>Ciência aplicada<br>ao resultado</h2>
         </div>
+        <p class="cabeca_txt">Nada de achismo: cada decisão do seu treino e da sua dieta tem base em evidência científica e em mais de 10 anos de prática.</p>
+      </div>
+      <div class="pilares">
+        <article class="pilar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 15h9"/></svg>
+          <h3>Base científica</h3>
+          <p>Estudo contínuo do que realmente funciona, a partir das melhores evidências e pesquisas.</p>
+        </article>
+        <article class="pilar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v6l-3 7M12 13l3 7M7 10l5-2 5 2"/></svg>
+          <h3>Biomecânica e fisiologia</h3>
+          <p>Exercícios que respeitam a mecânica do seu corpo para prevenir lesões e ganhar massa ou emagrecer com segurança.</p>
+        </article>
+        <article class="pilar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-4.5-2.5-8-6-8-11a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 5-3.5 8.5-8 11Z"/><path d="M9 12h2l1-2 1.5 4 1-2H16"/></svg>
+          <h3>Nutrição integrada</h3>
+          <p>O treino sozinho não faz milagre. A estratégia nutricional acompanha a sua rotina, suas preferências e seu objetivo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <!-- Menu Mobile -->
-        <div class="hidden md:hidden glass-nav absolute w-full border-b border-gray-700 top-20 left-0 z-40 transition-all duration-300" id="mobile-menu">
-            <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="#home" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Início</a>
-                <a href="#sobre" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Sobre</a>
-                <a href="#servicos" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Consultoria</a>
-                <a href="#resultados" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Resultados</a>
-                <a href="#palestras" onclick="toggleMenu()" class="block px-3 py-3 rounded-xl text-base font-medium hover:bg-white/10 hover:text-gustavo-green transition">Palestras</a>
-                
-                <div class="pt-4 mt-2 border-t border-gray-800 space-y-3">
-                    <a href="https://metodo-treinamento.vercel.app" target="_blank" onclick="toggleMenu()" class="flex items-center justify-center w-full px-3 py-3 rounded-xl text-base font-medium border border-gray-700 text-gray-300 hover:bg-white/5 hover:text-white transition">
-                        <i class="fas fa-user-circle mr-2 text-gustavo-green"></i> Área de Membros
-                    </a>
-                    <!-- Atualizado para link direto do WhatsApp no Mobile -->
-                    <a href="https://wa.me/5531982049721" class="block text-center px-3 py-3 text-gustavo-green font-bold bg-white/5 rounded-xl border border-gustavo-green/20">Fale Comigo</a>
-                </div>
-            </div>
+  <!-- 3. PLANOS (os 4 cartões da referência) -->
+  <section class="secao secao--verde" id="planos">
+    <div class="wrap">
+      <div class="cabeca">
+        <div>
+          <p class="rotulo">Planos e consultoria</p>
+          <h2 class="titulo" data-linhas>Como posso<br>te ajudar hoje</h2>
         </div>
+        <div class="cabeca_lado">
+          <p class="cabeca_txt">Online ou presencial, o plano é montado em cima de você: corpo, rotina e objetivo.</p>
+          <a class="btn btn--verde" href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20saber%20qual%20plano%20%C3%A9%20o%20ideal%20para%20mim." target="_blank" rel="noopener noreferrer">Falar no WhatsApp <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="planos">
+        <article class="plano">
+          <span class="plano_n">01</span>
+          <h3>Consultoria Fitness</h3>
+          <p class="plano_tipo">Online</p>
+          <p>Treino e dieta na palma da mão: acompanhamento pelo app, análise dos seus vídeos de execução e ajustes periódicos.</p>
+          <ul><li>Periodização personalizada</li><li>Suporte pelo WhatsApp</li><li>Prescrição nutricional</li></ul>
+          <a class="plano_link" href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Tenho%20interesse%20na%20Consultoria%20Fitness." target="_blank" rel="noopener noreferrer">Saber mais <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="plano plano--destaque">
+          <span class="plano_selo">Mais procurado</span>
+          <span class="plano_n">02</span>
+          <h3>Personal Trainer</h3>
+          <p class="plano_tipo">Presencial</p>
+          <p>Acompanhamento ao seu lado: correção da execução na hora, motivação e ajuste preciso de carga.</p>
+          <ul><li>Atendimento exclusivo</li><li>Avaliação física completa</li><li>Planejamento nutricional</li></ul>
+          <a class="plano_link" href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20saber%20sobre%20Personal%20Presencial." target="_blank" rel="noopener noreferrer">Agendar avaliação <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="plano">
+          <span class="plano_n">03</span>
+          <h3>Palestras e workshops</h3>
+          <p class="plano_tipo">Para o seu evento</p>
+          <p>Conhecimento científico para academias, universidades, grupos de estudo e eventos fitness.</p>
+          <ul><li>Biomecânica aplicada</li><li>Fisiologia do emagrecimento</li><li>Periodização de treino</li></ul>
+          <a class="plano_link" href="#palestras">Ver temas <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="plano">
+          <span class="plano_n">04</span>
+          <h3>Área de Membros</h3>
+          <p class="plano_tipo">Já é aluno?</p>
+          <p>Acesse seus treinos, materiais e conteúdos do método na plataforma de alunos.</p>
+          <ul><li>Treinos organizados</li><li>Materiais do método</li><li>Acesso pelo celular</li></ul>
+          <a class="plano_link" href="https://metodo-treinamento.vercel.app" target="_blank" rel="noopener noreferrer">Entrar <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. RESULTADOS -->
+  <section class="secao" id="resultados">
+    <div class="wrap">
+      <div class="cabeca">
+        <div>
+          <p class="rotulo">Resultados reais</p>
+          <h2 class="titulo" data-linhas>Transformações<br>de vida</h2>
+        </div>
+        <div class="cabeca_lado">
+          <p class="cabeca_txt">O que acontece quando ciência, disciplina e a estratégia certa andam juntas.</p>
+          <a class="btn btn--linha" href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" rel="noopener noreferrer">Mais resultados no Instagram <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="resultados">
+        <article class="resultado">
+          <div class="resultado_fotos"><figure><img src="assets/img/resultados/antes1.webp" width="420" height="560" loading="lazy" alt="Aluno antes, de lado"><figcaption>Antes</figcaption></figure><figure class="depois"><img src="assets/img/resultados/depois1.webp" width="420" height="560" loading="lazy" alt="O mesmo aluno depois, de lado"><figcaption>Depois</figcaption></figure></div>
+          <h3>Hipertrofia e definição</h3>
+          <p>"Seguiu o plano à risca e os resultados vieram mais rápido do que ele imaginava, só corrigindo a saúde intestinal."</p>
+        </article>
+        <article class="resultado">
+          <div class="resultado_fotos"><figure><img src="assets/img/resultados/antes2.webp" width="420" height="560" loading="lazy" alt="Aluno antes, de frente"><figcaption>Antes</figcaption></figure><figure class="depois"><img src="assets/img/resultados/depois2.webp" width="420" height="560" loading="lazy" alt="O mesmo aluno depois, de frente"><figcaption>Depois</figcaption></figure></div>
+          <h3>Emagrecimento saudável</h3>
+          <p>"Perdeu 20 kg combinando estratégias de nutrição e de treino. A metodologia é realmente eficiente."</p>
+        </article>
+        <article class="resultado">
+          <div class="resultado_fotos"><figure><img src="assets/img/resultados/antes3.webp" width="420" height="560" loading="lazy" alt="Aluno antes, de lado"><figcaption>Antes</figcaption></figure><figure class="depois"><img src="assets/img/resultados/depois3.webp" width="420" height="560" loading="lazy" alt="O mesmo aluno depois, de lado"><figcaption>Depois</figcaption></figure></div>
+          <h3>Recomposição corporal</h3>
+          <p>"Resultados consistentes com reeducação alimentar e treino de força."</p>
+        </article>
+        <article class="resultado">
+          <div class="resultado_fotos"><figure><img src="assets/img/resultados/antes4.webp" width="420" height="560" loading="lazy" alt="Aluna antes, de frente"><figcaption>Antes</figcaption></figure><figure class="depois"><img src="assets/img/resultados/depois4.webp" width="420" height="560" loading="lazy" alt="A mesma aluna depois, de frente"><figcaption>Depois</figcaption></figure></div>
+          <h3>Mudança de estilo de vida</h3>
+          <p>"Mais disposição, saúde e autoestima com um método que dá para manter."</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PALESTRAS (cartões com foto da referência) -->
+  <section class="secao secao--alt" id="palestras">
+    <div class="wrap">
+      <div class="cabeca">
+        <div>
+          <p class="rotulo">Educação e ciência</p>
+          <h2 class="titulo" data-linhas>Ciência para<br>o seu evento</h2>
+        </div>
+        <div class="cabeca_lado">
+          <p class="cabeca_txt">Palestras e workshops dinâmicos, com teoria e prática lado a lado, para academias, universidades e eventos fitness.</p>
+          <a class="btn btn--linha" href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Gostaria%20de%20saber%20sobre%20palestras%20e%20workshops." target="_blank" rel="noopener noreferrer">Solicitar orçamento <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="temas">
+        <article class="tema">
+          <div class="tema_foto"><img src="assets/img/palestra-biomecanica.webp" width="900" height="675" loading="lazy" alt="Gustavo dando palestra sobre ciência e estratégias para o emagrecimento"></div>
+          <div class="tema_c"><span class="tag">Palestra</span><h3>Fisiologia do emagrecimento</h3><p>Estratégias metabólicas baseadas em evidências.</p></div>
+        </article>
+        <article class="tema">
+          <div class="tema_foto"><img src="assets/img/workshop-pratico.webp" width="900" height="675" loading="lazy" alt="Gustavo corrigindo a execução de um exercício durante um workshop"></div>
+          <div class="tema_c"><span class="tag">Workshop</span><h3>Biomecânica aplicada</h3><p>Prevenção de lesões e otimização do movimento, na prática.</p></div>
+        </article>
+        <article class="tema tema--destaque">
+          <div class="tema_foto"><img src="assets/img/palestra-evento.webp" width="900" height="675" loading="lazy" alt="Gustavo apresentando em um evento fitness"></div>
+          <div class="tema_c"><span class="tag">Palestra</span><h3>Periodização de treinamento</h3><p>Como estruturar treinos de longo prazo que continuam dando resultado.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CHAMADA FINAL -->
+  <section class="final" id="contato">
+    <div class="final_fundo" aria-hidden="true"></div>
+    <div class="wrap final_in">
+      <p class="rotulo">Comece agora</p>
+      <h2 class="titulo final_titulo" data-linhas>Pronto para começar<br>o que funciona?</h2>
+      <p class="final_txt">Seu corpo é fisiologia e precisa de um método que respeite isso. Nutrição, treino e estratégia baseados em ciência começam com uma mensagem.</p>
+      <div class="final_acoes">
+        <a class="btn btn--verde" href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Vim%20pelo%20site%20e%20quero%20come%C3%A7ar." target="_blank" rel="noopener noreferrer">Falar no WhatsApp <span aria-hidden="true">→</span></a>
+        <a class="btn btn--linha" href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" rel="noopener noreferrer">Seguir no Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap rodape_in">
+    <img class="rodape_logo" src="assets/img/logo.png" width="1061" height="152" loading="lazy" alt="Gustavo Carvalho, Personal Trainer e Nutricionista">
+    <nav class="rodape_links" aria-label="Rodapé">
+      <a href="https://wa.me/5531982049721" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://metodo-treinamento.vercel.app" target="_blank" rel="noopener noreferrer">Área de Membros</a>
     </nav>
+    <p>© 2026 Gustavo Carvalho · Alta performance e saúde</p>
+  </div>
+</footer>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-                
-                <!-- Texto Hero -->
-                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left reveal active z-20">
-                    <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-gustavo-green/50 bg-gustavo-green/10 text-gustavo-green text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
-                        <i class="fas fa-bolt mr-2 animate-pulse"></i> Muito além de calorias
-                    </div>
-                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-tight">
-                        Método Sem Achismo <span class="text-gradient block mt-2">Nutrição e Treino Baseados em Ciência</span>
-                    </h1>
-                    <p class="mt-6 text-lg text-gray-300 sm:mt-8 sm:max-w-xl sm:mx-auto md:mt-8 lg:mx-0 font-light leading-relaxed">
-                        Desenvolvido por <strong class="text-white">Gustavo Carvalho</strong>, Especialista em Fisiologia do Exercício, Nutrição Esportiva e Biomecânica, Mestrando em Fisiologia na UFMG. Com mais de <strong class="text-white">10 anos de experiência</strong> e mais de <strong class="text-white">400 pessoas atendidas</strong>.
-                    </p>
-                    <div class="mt-10 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-5">
-                        <a href="#servicos" class="group flex items-center justify-center px-8 py-4 text-base font-bold rounded-full text-black bg-gustavo-green hover:bg-white hover:scale-105 transition duration-300 shadow-[0_0_20px_rgba(0,200,83,0.5)] btn-glow">
-                            Consultoria Fitness
-                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" class="flex items-center justify-center px-8 py-4 border border-gray-600 text-base font-medium rounded-full text-white hover:border-gustavo-green hover:text-gustavo-green hover:bg-gustavo-green/10 transition duration-300 backdrop-blur-sm">
-                            <i class="fab fa-youtube mr-2"></i> Ver Canal
-                        </a>
-                    </div>
-                    
-                    <!-- Credenciais Rápidas -->
-                    <div class="mt-10 pt-8 border-t border-gray-800/50 flex flex-wrap gap-6 justify-center lg:justify-start text-gray-400 text-sm font-medium">
-                        <div class="flex items-center hover:text-white transition cursor-default">
-                            <div class="w-8 h-8 rounded-full bg-gustavo-green/20 flex items-center justify-center mr-3">
-                                <i class="fas fa-running text-gustavo-green"></i>
-                            </div>
-                            Biomecânica
-                        </div>
-                        <div class="flex items-center hover:text-white transition cursor-default">
-                            <div class="w-8 h-8 rounded-full bg-gustavo-green/20 flex items-center justify-center mr-3">
-                                <i class="fas fa-apple-alt text-gustavo-green"></i>
-                            </div>
-                            Nutrição Esportiva
-                        </div>
-                        <div class="flex items-center hover:text-white transition cursor-default">
-                            <div class="w-8 h-8 rounded-full bg-gustavo-green/20 flex items-center justify-center mr-3">
-                                <i class="fas fa-heartbeat text-gustavo-green"></i>
-                            </div>
-                            Fisiologia
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Imagem Hero (Flutuante e estilizada) -->
-                <div class="mt-16 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center reveal z-10">
-                    <div class="relative mx-auto w-full lg:max-w-md animate-float">
-                        <!-- Círculos decorativos atrás da imagem -->
-                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-gustavo-green rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
-                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-600 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
-
-                        <div class="relative block w-full bg-gradient-to-br from-gray-800 to-black rounded-3xl overflow-hidden shadow-2xl border border-gray-700/50 group">
-                            <!-- Overlay de brilho no hover -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-gustavo-green/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 z-10 pointer-events-none"></div>
-                            
-                            <!-- Imagem -->
-                            <img class="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition duration-700 ease-out" src="fotoinicio.png" alt="Treinador Gustavo Carvalho">
-                            
-                            <!-- Card Info Flutuante -->
-                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent backdrop-blur-sm">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="text-white font-bold text-xl tracking-wide">Treinador Gustavo</p>
-                                        <p class="text-gustavo-green text-sm font-medium">Personal & Nutri</p>
-                                    </div>
-                                    <div class="w-10 h-10 rounded-full bg-gustavo-green flex items-center justify-center text-black font-bold">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre / Metodologia -->
-    <section id="sobre" class="py-24 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
-                    Por que escolher minha <span class="text-gustavo-green relative inline-block">
-                        metodologia?
-                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-gustavo-green opacity-40" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7501 2.99999 84.8547 1.16677 198.001 3.50002" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
-                    </span>
-                </h2>
-                <p class="mt-6 max-w-2xl text-xl text-gray-400 mx-auto font-light">
-                    Não é achismo. É ciência aplicada ao resultado, com base em evidências e prática clínica.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Card 1 -->
-                <div class="glass-card p-10 rounded-3xl reveal relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-gustavo-green opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition duration-500"></div>
-                    <div class="w-16 h-16 bg-gradient-to-br from-gustavo-green to-green-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-green-900/40 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-microscope text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gustavo-green transition">Base Científica</h3>
-                    <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition">
-                        Ao longo desses 10 anos de profissão, venho estudando continuamente o que realmente funciona, baseado nas melhores evidências e pesquisas científicas.
-                    </p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="glass-card p-10 rounded-3xl reveal relative overflow-hidden group" style="transition-delay: 100ms;">
-                    <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-gustavo-green opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition duration-500"></div>
-                    <div class="w-16 h-16 bg-gradient-to-br from-gustavo-green to-green-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-green-900/40 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-heartbeat text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gustavo-green transition">Biomecânica & Fisiologia</h3>
-                    <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition">
-                        Exercícios prescritos respeitando a mecânica do seu corpo para prevenir lesões e maximizar a hipertrofia e emagrecimento de forma segura.
-                    </p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="glass-card p-10 rounded-3xl reveal relative overflow-hidden group" style="transition-delay: 200ms;">
-                    <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-gustavo-green opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition duration-500"></div>
-                    <div class="w-16 h-16 bg-gradient-to-br from-gustavo-green to-green-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-green-900/40 group-hover:scale-110 transition duration-300">
-                        <i class="fas fa-apple-alt text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gustavo-green transition">Nutrição Integrada</h3>
-                    <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition">
-                        O treino sozinho não faz milagre. Alinhamos estratégias nutricionais específicas para suportar sua rotina, preferências e objetivos.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Serviços -->
-    <section id="servicos" class="py-24 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 reveal">
-                <span class="text-gustavo-green font-bold tracking-[0.2em] uppercase text-sm border border-gustavo-green/30 px-4 py-2 rounded-full bg-gustavo-green/5">Planos e Consultoria</span>
-                <h2 class="mt-8 text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">Como posso te ajudar hoje?</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                <!-- Consultoria Online -->
-                <div class="group relative bg-gradient-to-b from-gray-800 to-black rounded-[2.5rem] p-1 reveal hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition duration-500">
-                    <div class="bg-[#111] rounded-[2.4rem] p-10 h-full flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-gray-700 opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 group-hover:bg-gustavo-green transition duration-700"></div>
-                        
-                        <div class="flex justify-between items-start mb-8 relative z-10">
-                            <div>
-                                <h3 class="text-3xl font-bold text-white mb-2">Consultoria Fitness</h3>
-                                <div class="inline-block bg-gray-800 text-gray-300 px-3 py-1 rounded-lg text-sm font-semibold border border-gray-700">Online</div>
-                            </div>
-                            <div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center border border-gray-700 group-hover:border-gustavo-green transition duration-300">
-                                <i class="fas fa-laptop-medical text-2xl text-white group-hover:text-gustavo-green transition"></i>
-                            </div>
-                        </div>
-                        
-                        <p class="text-gray-400 mb-8 flex-grow leading-relaxed">
-                            Treino e dieta na palma da sua mão. Acompanhamento via app, análise de vídeos de execução e ajustes periódicos baseados no seu feedback.
-                        </p>
-                        
-                        <ul class="space-y-4 mb-10 text-gray-300">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Periodização personalizada</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Suporte via WhatsApp</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Prescrição nutricional</li>
-                        </ul>
-                        
-                        <!-- Corrigido número antigo para o novo 31982049721 -->
-                        <a href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Tenho%20interesse%20na%20Consultoria%20Fitness." target="_blank" class="w-full block text-center border border-gray-600 text-white font-bold py-4 rounded-2xl hover:border-gustavo-green hover:bg-gustavo-green hover:text-black transition duration-300 transform group-hover:translate-y-1">
-                            Saber Mais
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Personal Trainer (Destaque Premium) -->
-                <div class="group relative rounded-[2.5rem] p-1 reveal transform md:-translate-y-6 hover:shadow-[0_0_40px_rgba(0,200,83,0.3)] transition duration-500">
-                    <!-- Borda Gradiente Animada -->
-                    <div class="absolute inset-0 bg-gradient-to-b from-gustavo-green via-green-600 to-gustavo-green rounded-[2.5rem] opacity-80 blur-sm group-hover:blur-md transition duration-500"></div>
-                    
-                    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-50"></div>
-
-                    <div class="bg-[#0f0f0f] rounded-[2.4rem] p-10 h-full flex flex-col relative overflow-hidden border border-gustavo-green/20">
-                        <div class="absolute top-0 right-0 bg-gustavo-green text-black text-xs font-black px-4 py-2 rounded-bl-2xl z-20 tracking-wider uppercase">Mais Procurado</div>
-                        
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-gustavo-green opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 group-hover:opacity-20 transition duration-700"></div>
-
-                        <div class="flex justify-between items-start mb-8 relative z-10">
-                            <div>
-                                <h3 class="text-3xl font-bold text-white mb-2">Personal Trainer</h3>
-                                <div class="inline-block bg-gustavo-green/20 text-gustavo-green px-3 py-1 rounded-lg text-sm font-semibold border border-gustavo-green/30">Presencial</div>
-                            </div>
-                            <div class="w-14 h-14 bg-gustavo-green rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,200,83,0.4)]">
-                                <i class="fas fa-dumbbell text-2xl text-black"></i>
-                            </div>
-                        </div>
-                        
-                        <p class="text-gray-300 mb-8 flex-grow leading-relaxed font-light">
-                            Acompanhamento presencial para extrair seu máximo. Correção biomecânica em tempo real, motivação e ajuste de carga preciso.
-                        </p>
-                        
-                        <ul class="space-y-4 mb-10 text-white">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Atendimento exclusivo</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> Avaliação física completa</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-gustavo-green mr-3 text-lg"></i> <strong>Planejamento Nutricional</strong></li>
-                        </ul>
-                        
-                        <a href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20saber%20sobre%20Personal%20Presencial." class="w-full block text-center bg-gustavo-green text-black font-bold py-4 rounded-2xl hover:bg-white transition duration-300 shadow-[0_4px_20px_rgba(0,200,83,0.4)] btn-glow transform group-hover:translate-y-1">
-                            Agendar Avaliação
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Nova Seção: Antes e Depois -->
-    <section id="resultados" class="py-24 relative z-10 bg-black/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <span class="text-gustavo-green font-bold tracking-[0.2em] uppercase text-sm border border-gustavo-green/30 px-4 py-2 rounded-full bg-gustavo-green/5">Resultados Reais</span>
-                <h2 class="mt-6 text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
-                    Transformações de <span class="text-gradient">Vida</span>
-                </h2>
-                <p class="mt-6 max-w-2xl text-xl text-gray-400 mx-auto font-light">
-                    Veja o que acontece quando unimos ciência, disciplina e a estratégia certa.
-                </p>
-            </div>
-
-            <!-- Slider Container com Setas -->
-            <div class="relative max-w-2xl mx-auto reveal group/slider">
-                
-                <!-- Botão Anterior -->
-                <button id="prev-result" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 bg-gustavo-green/10 hover:bg-gustavo-green text-gustavo-green hover:text-black w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md border border-gustavo-green/30 transition-all duration-300 opacity-0 group-hover/slider:opacity-100 focus:opacity-100">
-                    <i class="fas fa-chevron-left text-xl"></i>
-                </button>
-
-                <!-- Botão Próximo -->
-                <button id="next-result" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 bg-gustavo-green/10 hover:bg-gustavo-green text-gustavo-green hover:text-black w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md border border-gustavo-green/30 transition-all duration-300 opacity-0 group-hover/slider:opacity-100 focus:opacity-100">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </button>
-
-                <!-- Área de Rolagem -->
-                <div id="results-slider" class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide" style="scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none;">
-                    
-                    <!-- Transformação 1 -->
-                    <div class="w-full flex-shrink-0 snap-center glass-card rounded-3xl overflow-hidden group">
-                        <!-- Aspect Ratio Ajustado para 3:4 em cada imagem (Total 6:4 = 3:2) -->
-                        <div class="relative w-full aspect-[3/2] overflow-hidden bg-gray-900">
-                             <!-- Placeholders para imagens de antes e depois -->
-                            <div class="absolute inset-0 flex">
-                                <div class="w-1/2 h-full relative border-r border-gray-800">
-                                    <img src="antes1.png" alt="Antes" class="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 transition duration-700">
-                                    <span class="absolute top-4 left-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">ANTES</span>
-                                </div>
-                                <div class="w-1/2 h-full relative">
-                                    <img src="depois1.png" alt="Depois" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                    <span class="absolute top-4 right-4 bg-gustavo-green text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">DEPOIS</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-8">
-                            <div class="flex items-center justify-between mb-4">
-                                <h4 class="text-xl font-bold text-white">Hipertrofia e Definição</h4>
-                                <div class="flex text-gustavo-green text-xs">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                            <p class="text-gray-400 text-sm italic">"Seguiu o plano à risca e os resultados apareceram mais rápido do que ele imaginava, apenas corrigindo a saúde intestinal."</p>
-                        </div>
-                    </div>
-
-                    <!-- Transformação 2 -->
-                    <div class="w-full flex-shrink-0 snap-center glass-card rounded-3xl overflow-hidden group">
-                        <div class="relative w-full aspect-[3/2] overflow-hidden bg-gray-900">
-                             <div class="absolute inset-0 flex">
-                                <div class="w-1/2 h-full relative border-r border-gray-800">
-                                    <img src="antes2.png" alt="Antes" class="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 transition duration-700">
-                                    <span class="absolute top-4 left-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">ANTES</span>
-                                </div>
-                                <div class="w-1/2 h-full relative">
-                                    <img src="depois2.png" alt="Depois" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                    <span class="absolute top-4 right-4 bg-gustavo-green text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">DEPOIS</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-8">
-                            <div class="flex items-center justify-between mb-4">
-                                <h4 class="text-xl font-bold text-white">Emagrecimento Saudável</h4>
-                                <div class="flex text-gustavo-green text-xs">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                            <p class="text-gray-400 text-sm italic">"Perdeu 20 kg combinando estratégias nutricionais e de treino. A metodologia é realmente eficiente."</p>
-                        </div>
-                    </div>
-
-                    <!-- Transformação 3 -->
-                    <div class="w-full flex-shrink-0 snap-center glass-card rounded-3xl overflow-hidden group">
-                        <div class="relative w-full aspect-[3/2] overflow-hidden bg-gray-900">
-                             <div class="absolute inset-0 flex">
-                                <div class="w-1/2 h-full relative border-r border-gray-800">
-                                    <img src="antes3.png" alt="Antes" class="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 transition duration-700">
-                                    <span class="absolute top-4 left-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">ANTES</span>
-                                </div>
-                                <div class="w-1/2 h-full relative">
-                                    <img src="depois3.png" alt="Depois" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                    <span class="absolute top-4 right-4 bg-gustavo-green text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">DEPOIS</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-8">
-                            <div class="flex items-center justify-between mb-4">
-                                <h4 class="text-xl font-bold text-white">Recomposição Corporal</h4>
-                                <div class="flex text-gustavo-green text-xs">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                            <p class="text-gray-400 text-sm italic">"Resultados consistentes com reeducação alimentar e treino de força focado."</p>
-                        </div>
-                    </div>
-
-                    <!-- Transformação 4 -->
-                    <div class="w-full flex-shrink-0 snap-center glass-card rounded-3xl overflow-hidden group">
-                        <div class="relative w-full aspect-[3/2] overflow-hidden bg-gray-900">
-                             <div class="absolute inset-0 flex">
-                                <div class="w-1/2 h-full relative border-r border-gray-800">
-                                    <img src="antes4.png" alt="Antes" class="w-full h-full object-cover filter grayscale opacity-80 group-hover:grayscale-0 transition duration-700">
-                                    <span class="absolute top-4 left-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">ANTES</span>
-                                </div>
-                                <div class="w-1/2 h-full relative">
-                                    <img src="depois4.png" alt="Depois" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                    <span class="absolute top-4 right-4 bg-gustavo-green text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">DEPOIS</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-8">
-                            <div class="flex items-center justify-between mb-4">
-                                <h4 class="text-xl font-bold text-white">Mudança de Estilo de Vida</h4>
-                                <div class="flex text-gustavo-green text-xs">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                            <p class="text-gray-400 text-sm italic">"Mais disposição, saúde e autoestima renovada através de um método sustentável."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center reveal">
-                 <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="inline-flex items-center text-gustavo-green hover:text-white transition font-bold border-b border-gustavo-green pb-1">
-                    Ver mais resultados no Instagram <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nova Seção: Palestras e Workshops -->
-    <section id="palestras" class="py-24 relative z-10 overflow-hidden">
-        <!-- Fundo decorativo -->
-        <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-black opacity-90"></div>
-        <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-x-1/4 translate-y-1/4">
-            <i class="fas fa-chalkboard-teacher text-[20rem] text-gustavo-green"></i>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
-                <!-- Conteúdo -->
-                <div class="mb-16 lg:mb-0 reveal">
-                    <span class="text-gustavo-green font-bold tracking-widest uppercase text-sm mb-4 block">Educação e Ciência</span>
-                    <h2 class="text-4xl font-extrabold text-white sm:text-5xl mb-8 leading-tight">
-                        Leve Conhecimento <span class="text-transparent bg-clip-text bg-gradient-to-r from-gustavo-green to-white">Científico</span> para o seu Evento
-                    </h2>
-                    <p class="text-lg text-gray-300 mb-10 leading-relaxed font-light">
-                        Compartilho minha experiência acadêmica e prática através de palestras e workshops dinâmicos. Ideal para academias, universidades, grupos de estudos e eventos fitness.
-                    </p>
-                    
-                    <div class="space-y-6 mb-10">
-                        <div class="flex items-start group">
-                            <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-gustavo-green group-hover:bg-gustavo-green group-hover:text-black transition duration-300">
-                                <i class="fas fa-running text-xl"></i>
-                            </div>
-                            <div class="ml-6">
-                                <h4 class="text-xl font-bold text-white group-hover:text-gustavo-green transition">Biomecânica Aplicada</h4>
-                                <p class="text-gray-400 text-sm mt-1">Prevenção de lesões e otimização do movimento.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start group">
-                            <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-gustavo-green group-hover:bg-gustavo-green group-hover:text-black transition duration-300">
-                                <i class="fas fa-burn text-xl"></i>
-                            </div>
-                            <div class="ml-6">
-                                <h4 class="text-xl font-bold text-white group-hover:text-gustavo-green transition">Fisiologia do Emagrecimento</h4>
-                                <p class="text-gray-400 text-sm mt-1">Estratégias metabólicas baseadas em evidências.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start group">
-                            <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-gustavo-green group-hover:bg-gustavo-green group-hover:text-black transition duration-300">
-                                <i class="fas fa-clipboard-list text-xl"></i>
-                            </div>
-                            <div class="ml-6">
-                                <h4 class="text-xl font-bold text-white group-hover:text-gustavo-green transition">Periodização de Treinamento</h4>
-                                <p class="text-gray-400 text-sm mt-1">Como estruturar treinos de longo prazo.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="https://wa.me/5531982049721?text=Ol%C3%A1%2C%20Gustavo!%20Gostaria%20de%20saber%20sobre%20palestras%20e%20workshops." class="inline-flex items-center px-8 py-4 border border-gustavo-green text-base font-bold rounded-full text-gustavo-green hover:bg-gustavo-green hover:text-black transition duration-300 shadow-[0_0_15px_rgba(0,200,83,0.2)] hover:shadow-[0_0_25px_rgba(0,200,83,0.6)]">
-                        <i class="far fa-calendar-alt mr-2"></i> Solicitar Orçamento
-                    </a>
-                </div>
-
-                <!-- Imagem Ilustrativa 3D (Slider de Palestras) -->
-                <div class="relative reveal perspective-1000">
-                    <div class="absolute inset-0 bg-gustavo-green blur-[60px] opacity-20"></div>
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-700 group transform transition duration-700 hover:rotate-y-12 hover:scale-105" id="palestra-slider">
-                        
-                        <!-- Slide 2 (Agora principal - Relative: Define altura) -->
-                        <img src="fotopalestra2.png" alt="Palestra Fitness 2" class="relative w-full h-full object-cover transition-opacity duration-1000 opacity-100 z-0">
-                        
-                        <!-- Slide 3 -->
-                        <img src="fotopalestra3.png" alt="Palestra Fitness 3" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
-                        
-                        <!-- Slide 4 -->
-                        <img src="fotopalestra4.png" alt="Palestra Fitness 4" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0">
-                        
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 pointer-events-none"></div>
-                        
-                        <!-- Badge Flutuante -->
-                        <div class="absolute bottom-8 left-8 backdrop-blur-md bg-white/10 p-6 rounded-2xl border border-white/10 group-hover:bg-black/80 transition duration-300 z-20">
-                            <p class="text-white font-bold text-xl mb-1 flex items-center">
-                                <span class="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></span>
-                                Workshops Práticos
-                            </p>
-                            <p class="text-gray-300 text-sm">Teoria e prática lado a lado.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Final -->
-    <section class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gustavo-green transform -skew-y-3 origin-bottom-left scale-110"></div>
-        <div class="absolute inset-0 bg-pattern opacity-10"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 reveal">
-            <h2 class="text-4xl font-extrabold text-black sm:text-5xl mb-6 tracking-tight">
-                Pronto para começar <span class="text-white drop-shadow-md">o que realmente funciona?</span>
-            </h2>
-            <p class="text-xl text-black/80 mb-12 font-medium max-w-2xl mx-auto">
-                Seu corpo é fisiologia e precisa de métodos que respeitem isso. Nutrição, treino e estratégia baseados em ciência começam com um clique.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="https://wa.me/5531982049721" class="flex items-center justify-center px-10 py-5 bg-black text-white font-bold rounded-full text-lg hover:scale-105 transition shadow-2xl btn-glow border border-transparent hover:border-white/20">
-                    <i class="fab fa-whatsapp mr-2 text-2xl text-green-400"></i> Falar no WhatsApp
-                </a>
-                <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="flex items-center justify-center px-10 py-5 bg-white/20 backdrop-blur-sm border-2 border-black text-black font-bold rounded-full text-lg hover:bg-black hover:text-white transition shadow-xl">
-                    <i class="fab fa-instagram mr-2 text-2xl"></i> Seguir no Instagram
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contato" class="bg-[#050505] pt-16 pb-10 border-t border-gray-900 relative z-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-8 md:mb-0 text-center md:text-left">
-                    <img src="logo.png" alt="Logo Gustavo Carvalho" class="h-16 w-auto object-contain mb-6 mx-auto md:mx-0 opacity-80 hover:opacity-100 transition">
-                    <p class="text-gray-500 text-sm">© 2026 Gustavo Carvalho. Todos os direitos reservados.</p>
-                    <p class="text-gray-600 text-xs mt-1">Alta Performance e Saúde.</p>
-                </div>
-                
-                <div class="flex space-x-8">
-                    <a href="https://www.instagram.com/gustavopersonal.nutri/" target="_blank" class="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 transition duration-300 transform hover:-translate-y-1">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCJ9dFbi07R8DbAcdnVMB5sw" target="_blank" class="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-600 transition duration-300 transform hover:-translate-y-1">
-                        <i class="fab fa-youtube text-xl"></i>
-                    </a>
-                    <a href="https://wa.me/5531982049721" class="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-500 transition duration-300 transform hover:-translate-y-1">
-                        <i class="fab fa-whatsapp text-xl"></i>
-                    </a>
-                    <a href="#" class="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500 transition duration-300 transform hover:-translate-y-1">
-                        <i class="far fa-envelope text-xl"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Botão Flutuante WhatsApp (Pulsante) -->
-    <a href="https://wa.me/5531982049721" class="fixed bottom-8 right-8 z-50 group">
-        <span class="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
-        <div class="relative bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,200,83,0.6)] hover:bg-green-600 hover:scale-110 transition duration-300">
-            <i class="fab fa-whatsapp text-3xl"></i>
-        </div>
-    </a>
-
-    <!-- Scripts Javascript -->
-    <script>
-        // Lógica do Menu Mobile
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('block');
-            } else {
-                menu.classList.add('hidden');
-                menu.classList.remove('block');
-            }
-        }
-
-        // Lógica Avançada de Scroll Reveal usando Intersection Observer
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-        // Smooth Scroll para links internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Fechar menu mobile se estiver aberto
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
-            });
-        });
-
-        // Lógica de Navegação do Slider de Resultados (Antes e Depois)
-        const resultSlider = document.getElementById('results-slider');
-        const prevBtn = document.getElementById('prev-result');
-        const nextBtn = document.getElementById('next-result');
-
-        if(resultSlider && prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                resultSlider.scrollBy({ left: -resultSlider.offsetWidth, behavior: 'smooth' });
-            });
-
-            nextBtn.addEventListener('click', () => {
-                resultSlider.scrollBy({ left: resultSlider.offsetWidth, behavior: 'smooth' });
-            });
-        }
-
-        // Carousel Palestras
-        document.addEventListener('DOMContentLoaded', function() {
-            const sliderImages = document.querySelectorAll('#palestra-slider img');
-            let currentImageIndex = 0;
-            
-            // Verifica se as imagens existem para evitar erro
-            if(sliderImages.length > 0) {
-                setInterval(() => {
-                    // Remove opacidade da atual
-                    sliderImages[currentImageIndex].classList.remove('opacity-100');
-                    sliderImages[currentImageIndex].classList.add('opacity-0');
-                    
-                    // Incrementa índice (com loop)
-                    currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
-                    
-                    // Adiciona opacidade na próxima
-                    sliderImages[currentImageIndex].classList.remove('opacity-0');
-                    sliderImages[currentImageIndex].classList.add('opacity-100');
-                }, 5000); // 5000ms = 5 segundos
-            }
-        });
-    </script>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/SplitText.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>
