@@ -9,7 +9,15 @@ O vermelho da referência virou o verde do Gustavo (`#00c853`). As transições 
 - Site atual no ar: https://gustavocarvalhotrainer.com/ (repo GitHub `Tiago-Santos-Vieira/gustavocarvalho`, um `index.html` com Tailwind).
 - O conteúdo, as fotos, os antes e depois e os links vieram desse repositório; os originais ficam em `assets/originais/`.
 
-## Seções
+## Estrutura (desde 25/11/2026)
+
+- `index.html` (endereço principal): **página de links para a bio do Instagram**.
+  - Fundo: foto de um workshop desfocada e tingida de verde.
+  - "GUSTAVO CARVALHO" vazado atrás do recorte dele, partículas verdes e botão principal com brilho passando.
+  - Botões: Consultoria, Personal presencial, Site, Resultados, Palestras e Área de Membros.
+- `site/index.html` (`/site`): o site completo, descrito abaixo.
+
+## Seções do site
 
 1. **Abertura:** logo e barra verde; a cortina sobe em curva (só na primeira visita da sessão).
 2. **Topo:** "Método sem achismo", com "GUSTAVO CARVALHO" gigante atrás da foto recortada (`npx hyperframes remove-background`). Os cartões "10+ anos" e "400+ pessoas" contam até o valor.
